@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Received — MedVerify</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+  <nav class="nav is-scrolled">
+    <a href="index.html" class="nav__logo">MedVerify</a>
+    <a href="index.html#hero-form" class="btn btn--primary btn--sm">Get a Report</a>
+  </nav>
+
+  <section class="section">
+    <div class="success">
+      <h2>We received your request.</h2>
+      <p>You'll receive your verification report at the email you provided within 72 hours. Check your spam folder if you don't see it — we'll be sending from <strong>reports@medverify.com</strong>.</p>
+      <p>Your order number is <strong id="order-number">—</strong>.</p>
+      <p>If you have additional information about the doctor or clinic that might help the investigation, reply to your confirmation email.</p>
+      <a class="return" href="index.html">← Return to MedVerify.com</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="margin-top:0;border-top:none;">
+      <p class="footer__legal">© 2025 MedVerify. We are an independent verification service. We are not a medical provider, insurer, or referral service. We do not recommend doctors or clinics.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Show a placeholder order number. Replace with the real order
+    // id returned by the Stripe webhook / backend at launch.
+    (function () {
+      var el = document.getElementById("order-number");
+      var n = "MV-" + Date.now().toString().slice(-6);
+      if (el) el.textContent = n;
+    })();
+  </script>
+</body>
+</html>
