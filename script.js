@@ -1,4 +1,3 @@
-  <script>
 (function () {
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -109,5 +108,4 @@
     });
   });
 })();
-  </script>
 
