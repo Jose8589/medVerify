@@ -17,30 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ProfessionalService","name":"MedVerify","description":"Independent medical verification service for patients considering surgery in Mexico","areaServed":["US","CA"],"serviceType":"Medical credential verification","hasOfferCatalog":{"@type":"OfferCatalog","name":"Verification Report","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Full Medical Verification Report","description":"Doctor credentials, clinic status, and emergency protocol"}}]}}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"How do I know if a doctor in Mexico is really board certified?","acceptedAnswer":{"@type":"Answer","text":"In Mexico, board certification is issued by CONACEM and it expires — typically every five years. A doctor can have a valid SEP specialty license and an expired CONACEM certification. We verify both directly in each registry."}},
-    {"@type":"Question","name":"What does COFEPRIS do and what happens if a doctor or clinic has a sanction?","acceptedAnswer":{"@type":"Answer","text":"COFEPRIS is Mexico's federal health regulator. They issue alerts, sanctions, and clinic closures. We report what type of alert exists, when it was issued, and what it referred to."}},
-    {"@type":"Question","name":"What is the difference between a cédula profesional and a cédula de especialidad?","acceptedAnswer":{"@type":"Answer","text":"A cédula profesional confirms a medical degree. A cédula de especialidad confirms a recognized specialty residency. A doctor can have the first without the second. We verify both independently."}},
-    {"@type":"Question","name":"What happens if I have a complication during surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends on the clinic's distance from a hospital with an ICU. Your report includes the nearest hospital, estimated transfer time, and the nearest U.S. or Canadian consulate."}},
-    {"@type":"Question","name":"Is it safe to get surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on the specific doctor and clinic — which is why verification exists. The country is not the variable. The specific provider is."}},
-    {"@type":"Question","name":"How do I verify a Mexican doctor if I don't speak Spanish?","acceptedAnswer":{"@type":"Answer","text":"The registries are all in Spanish. We navigate them, interpret what we find, and deliver the report in plain English."}},
-    {"@type":"Question","name":"Can a doctor buy or fake credentials in Mexico?","acceptedAnswer":{"@type":"Answer","text":"SEP licenses have a unique number verifiable in the federal registry. But someone can present a real credential belonging to a similarly named person, or omit an expired specialty certification. Our homonym check catches these discrepancies."}},
-    {"@type":"Question","name":"How long does it take to receive the report?","acceptedAnswer":{"@type":"Answer","text":"72 hours from confirmed payment. We do not offer expedited service — the process requires the time it takes to be thorough."}},
-    {"@type":"Question","name":"What if you find something serious?","acceptedAnswer":{"@type":"Answer","text":"We report what we find and explain what it means. We do not make the decision for you — but you will have the information to make it yourself."}}
-  ]}
-  </script>
-<base target="_blank">
+  <link rel="stylesheet" href="assets/styles.css">
   <style>
-/* ========================================
-   MedVerify — Stylesheet
-   ======================================== */
-
 :root {
   --color-bg: #F4F1EC;
   --color-bg-dark: #0E1B2A;
@@ -59,944 +37,182 @@
   --max: 1080px;
   --ease: cubic-bezier(.22,.61,.36,1);
 }
-
-*, *::before, *::after { box-sizing: border-box; }
-
+* , *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text-primary);
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.7;
+  margin: 0; background: var(--color-bg); color: var(--color-text-primary);
+  font-family: "Inter", system-ui, sans-serif; font-size: 17px; line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
-
 img { max-width: 100%; display: block; }
-
 a { color: inherit; }
-
-h1, h2, h3 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 500;
-  margin: 0;
-}
-
+h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; margin: 0; }
 .section { padding: var(--space-4xl) 24px; }
-
 .container { max-width: var(--max); margin: 0 auto; }
-
 .narrow { max-width: 740px; }
-
 .mid { max-width: 920px; }
-
-.section--dark {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
-}
-
+.section--dark { background: var(--color-bg-dark); color: var(--color-text-light); }
 .section--surface { background: var(--color-surface); }
-
-.label {
-  font-weight: 500;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.10em;
-  color: var(--color-accent);
-  margin: 0 0 var(--space-md);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.label::before {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: var(--color-accent);
-  display: inline-block;
-}
-
-.section-title {
-  font-size: 38px;
-  line-height: 1.18;
-  margin-bottom: var(--space-lg);
-  max-width: 760px;
-}
-
-.lede {
-  font-size: 19px;
-  color: var(--color-text-secondary);
-  max-width: 640px;
-}
-
+.label { font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-accent); margin: 0 0 var(--space-md); display: flex; align-items: center; gap: 10px; }
+.label::before { content: ""; width: 28px; height: 1px; background: var(--color-accent); display: inline-block; }
+.section-title { font-size: 38px; line-height: 1.18; margin-bottom: var(--space-lg); max-width: 760px; }
+.lede { font-size: 19px; color: var(--color-text-secondary); max-width: 640px; }
 .section--dark .lede { color: rgba(244,241,236,.72); }
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
-}
-
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
-
 .reveal[data-delay="1"] { transition-delay: .08s; }
 .reveal[data-delay="2"] { transition-delay: .16s; }
 .reveal[data-delay="3"] { transition-delay: .24s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: .02em;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  transition: background .18s var(--ease), transform .18s var(--ease), color .18s;
-}
-
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 16px; letter-spacing: .02em; border-radius: 4px; cursor: pointer; text-decoration: none; border: none; transition: background .18s var(--ease), transform .18s var(--ease), color .18s; }
 .btn .arrow { transition: transform .18s var(--ease); }
-
 .btn:hover .arrow { transform: translateX(4px); }
-
-.btn--primary {
-  background: var(--color-accent);
-  color: var(--color-text-light);
-  padding: 16px 28px;
-}
-
+.btn--primary { background: var(--color-accent); color: var(--color-text-light); padding: 16px 28px; }
 .btn--primary:hover { background: var(--color-accent-hover); }
-
-.btn--ghost-light {
-  background: transparent;
-  color: var(--color-text-light);
-  border: 1.5px solid rgba(244,241,236,.3);
-  padding: 14.5px 26px;
-}
-
-.btn--ghost-light:hover {
-  background: rgba(244,241,236,.08);
-  border-color: rgba(244,241,236,.55);
-}
-
+.btn--ghost-light { background: transparent; color: var(--color-text-light); border: 1.5px solid rgba(244,241,236,.3); padding: 14.5px 26px; }
+.btn--ghost-light:hover { background: rgba(244,241,236,.08); border-color: rgba(244,241,236,.55); }
 .btn--full { width: 100%; justify-content: center; }
-
 .btn--sm { padding: 10px 18px; font-size: 14px; }
-
-.nav {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 60;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  border-bottom: 1px solid transparent;
-  transition: background .25s var(--ease), border-color .25s, padding .25s;
-}
-
-.nav.is-scrolled {
-  background: rgba(244,241,236,.92);
-  backdrop-filter: blur(8px);
-  border-bottom-color: var(--color-border);
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
-.nav__logo {
-  font-family: "Playfair Display", serif;
-  font-weight: 500;
-  font-size: 20px;
-  color: var(--color-text-light);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.nav__logo .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  display: inline-block;
-}
-
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 60; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid transparent; transition: background .25s var(--ease), border-color .25s, padding .25s; }
+.nav.is-scrolled { background: rgba(244,241,236,.92); backdrop-filter: blur(8px); border-bottom-color: var(--color-border); padding-top: 12px; padding-bottom: 12px; }
+.nav__logo { font-family: "Playfair Display", serif; font-weight: 500; font-size: 20px; color: var(--color-text-light); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav__logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); display: inline-block; }
 .nav.is-scrolled .nav__logo { color: var(--color-text-primary); }
-
-.hero {
-  background: radial-gradient(80% 120% at 80% 0%, rgba(193,125,17,.10), transparent 60%), var(--color-bg-dark);
-  color: var(--color-text-light);
-  padding: 168px 24px var(--space-3xl);
-}
-
-.hero__grid {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: var(--space-3xl);
-  align-items: center;
-}
-
-.hero h1 {
-  font-size: 52px;
-  line-height: 1.12;
-  margin-bottom: var(--space-lg);
-}
-
-.hero h1 em {
-  font-style: normal;
-  color: var(--color-accent);
-}
-
-.hero__sub {
-  font-size: 19px;
-  line-height: 1.7;
-  color: rgba(244,241,236,.78);
-  max-width: 520px;
-  margin-bottom: var(--space-xl);
-}
-
-.hero__cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-lg);
-  flex-wrap: wrap;
-}
-
-.hero__price {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero__price b {
-  font-weight: 700;
-  font-size: 26px;
-  color: var(--color-accent);
-  line-height: 1;
-}
-
-.hero__price span {
-  font-size: 13px;
-  color: rgba(244,241,236,.55);
-  margin-top: 4px;
-}
-
-.hero__meta {
-  margin-top: var(--space-xl);
-  font-size: 14px;
-  color: rgba(244,241,236,.5);
-  display: flex;
-  gap: var(--space-lg);
-  flex-wrap: wrap;
-}
-
-.hero__meta span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
+.hero { background: radial-gradient(80% 120% at 80% 0%, rgba(193,125,17,.10), transparent 60%), var(--color-bg-dark); color: var(--color-text-light); padding: 168px 24px var(--space-3xl); }
+.hero__grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--space-3xl); align-items: center; }
+.hero h1 { font-size: 52px; line-height: 1.12; margin-bottom: var(--space-lg); }
+.hero h1 em { font-style: normal; color: var(--color-accent); }
+.hero__sub { font-size: 19px; line-height: 1.7; color: rgba(244,241,236,.78); max-width: 520px; margin-bottom: var(--space-xl); }
+.hero__cta { display: flex; align-items: center; gap: var(--space-lg); flex-wrap: wrap; }
+.hero__price { display: flex; flex-direction: column; }
+.hero__price b { font-weight: 700; font-size: 26px; color: var(--color-accent); line-height: 1; }
+.hero__price span { font-size: 13px; color: rgba(244,241,236,.55); margin-top: 4px; }
+.hero__meta { margin-top: var(--space-xl); font-size: 14px; color: rgba(244,241,236,.5); display: flex; gap: var(--space-lg); flex-wrap: wrap; }
+.hero__meta span { display: flex; align-items: center; gap: 7px; }
 .hero__meta .tick { color: var(--color-accent); }
-
-.console {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(244,241,236,.14);
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 30px 80px rgba(0,0,0,.35);
-}
-
-.console__bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 12px;
-}
-
-.console__bar i {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(244,241,236,.2);
-}
-
-.console__bar small {
-  margin-left: auto;
-  font-size: 12px;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: rgba(244,241,236,.45);
-}
-
-.console__body {
-  background: rgba(0,0,0,.22);
-  border-radius: 8px;
-  padding: 18px 18px 10px;
-}
-
-.console__subject {
-  font-size: 13px;
-  color: rgba(244,241,236,.55);
-  margin: 0 0 2px;
-}
-
-.console__name {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  margin: 0 0 var(--space-md);
-}
-
-.check {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 0;
-  border-top: 1px solid rgba(244,241,236,.08);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .4s, transform .4s;
-}
-
-.check.show { opacity: 1; transform: none; }
-
-.check__icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  font-size: 13px;
-  font-weight: 700;
-}
-
+.console { background: rgba(255,255,255,.04); border: 1px solid rgba(244,241,236,.14); border-radius: 12px; padding: 8px; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+.console__bar { display: flex; align-items: center; gap: 7px; padding: 10px 12px; }
+.console__bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,241,236,.2); }
+.console__bar small { margin-left: auto; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: rgba(244,241,236,.45); }
+.console__body { background: rgba(0,0,0,.22); border-radius: 8px; padding: 18px 18px 10px; }
+.console__subject { font-size: 13px; color: rgba(244,241,236,.55); margin: 0 0 2px; }
+.console__name { font-family: "Playfair Display", serif; font-size: 22px; margin: 0 0 var(--space-md); }
+.console .check { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid rgba(244,241,236,.08); opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+.console .check.show { opacity: 1; transform: none; }
+.check__icon { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; font-size: 13px; font-weight: 700; }
 .check__icon.pending { background: rgba(244,241,236,.1); }
-
-.check__icon.pending::after {
-  content: "";
-  width: 11px;
-  height: 11px;
-  border: 2px solid rgba(244,241,236,.25);
-  border-top-color: rgba(244,241,236,.7);
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-}
-
+.check__icon.pending::after { content: ""; width: 11px; height: 11px; border: 2px solid rgba(244,241,236,.25); border-top-color: rgba(244,241,236,.7); border-radius: 50%; animation: spin .7s linear infinite; }
 .check__icon.ok { background: rgba(62,124,90,.18); color: #7FC49C; }
-
 .check__icon.warn { background: rgba(193,125,17,.2); color: var(--color-accent); }
-
-.check__label {
-  font-size: 15px;
-  color: rgba(244,241,236,.85);
-}
-
-.check__status {
-  margin-left: auto;
-  font-size: 13px;
-  font-weight: 600;
-}
-
+.check__label { font-size: 15px; color: rgba(244,241,236,.85); }
+.check__status { margin-left: auto; font-size: 13px; font-weight: 600; }
 .check__status.ok { color: #7FC49C; }
-
 .check__status.warn { color: var(--color-accent); }
-
 @keyframes spin { to { transform: rotate(360deg); } }
-
-.console__foot {
-  font-size: 12.5px;
-  color: rgba(244,241,236,.4);
-  padding: 12px 4px 4px;
-}
-
-.strip {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: var(--space-xl);
-}
-
-.stat__num {
-  font-family: "Playfair Display", serif;
-  font-size: 44px;
-  color: var(--color-accent);
-  line-height: 1;
-}
-
-.stat__txt {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-  margin-top: var(--space-sm);
-  max-width: 280px;
-}
-
-.compare {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.compare__col {
-  border-radius: 10px;
-  padding: 28px;
-}
-
+.console__foot { font-size: 12.5px; color: rgba(244,241,236,.4); padding: 12px 4px 4px; }
+.strip { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-xl); }
+.stat__num { font-family: "Playfair Display", serif; font-size: 44px; color: var(--color-accent); line-height: 1; }
+.stat__txt { font-size: 16px; color: var(--color-text-secondary); margin-top: var(--space-sm); max-width: 280px; }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-top: var(--space-xl); }
+.compare__col { border-radius: 10px; padding: 28px; }
 .compare__col.us { background: var(--color-surface); }
-
-.compare__col.mx {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
-}
-
-.compare__h {
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-md);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
+.compare__col.mx { background: var(--color-bg-dark); color: var(--color-text-light); }
+.compare__h { font-weight: 600; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: var(--space-md); display: flex; align-items: center; gap: 8px; }
 .compare__col.us .compare__h { color: var(--color-text-secondary); }
-
 .compare__col.mx .compare__h { color: var(--color-accent); }
-
 .compare__col ul { list-style: none; margin: 0; padding: 0; }
-
-.compare__col li {
-  font-size: 15.5px;
-  padding: 9px 0 9px 26px;
-  position: relative;
-  line-height: 1.5;
-}
-
-.compare__col.us li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--color-ok);
-  font-weight: 700;
-}
-
+.compare__col li { font-size: 15.5px; padding: 9px 0 9px 26px; position: relative; line-height: 1.5; }
+.compare__col.us li::before { content: "✓"; position: absolute; left: 0; color: var(--color-ok); font-weight: 700; }
 .compare__col.mx li { color: rgba(244,241,236,.82); }
-
-.compare__col.mx li::before {
-  content: "•";
-  position: absolute;
-  left: 4px;
-  color: var(--color-accent);
-}
-
-.compare__note {
-  margin-top: var(--space-2xl);
-  font-size: 19px;
-  line-height: 1.6;
-  max-width: 680px;
-}
-
-.compare__note b {
-  color: var(--color-text-primary);
-  font-weight: 600;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.card {
-  background: var(--color-surface);
-  border-radius: 10px;
-  padding: 30px;
-  border-top: 3px solid var(--color-accent);
-  transition: transform .25s var(--ease), box-shadow .25s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,.08);
-}
-
-.card__n {
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: .12em;
-  color: var(--color-accent);
-}
-
-.card h3 {
-  font-size: 23px;
-  line-height: 1.3;
-  margin: var(--space-sm) 0 var(--space-md);
-}
-
-.card p {
-  font-size: 16px;
-  line-height: 1.65;
-  margin: 0;
-  color: var(--color-text-secondary);
-}
-
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin-top: var(--space-xl);
-  flex-wrap: wrap;
-}
-
-.tab {
-  flex: 1;
-  min-width: 220px;
-  text-align: left;
-  cursor: pointer;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(244,241,236,.12);
-  border-radius: 10px;
-  padding: 18px 20px;
-  color: var(--color-text-light);
-  transition: border-color .2s, background .2s;
-  font-family: inherit;
-}
-
+.compare__col.mx li::before { content: "•"; position: absolute; left: 4px; color: var(--color-accent); }
+.compare__note { margin-top: var(--space-2xl); font-size: 19px; line-height: 1.6; max-width: 680px; }
+.compare__note b { color: var(--color-text-primary); font-weight: 600; }
+.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-lg); margin-top: var(--space-xl); }
+.card { background: var(--color-surface); border-radius: 10px; padding: 30px; border-top: 3px solid var(--color-accent); transition: transform .25s var(--ease), box-shadow .25s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+.card__n { font-weight: 700; font-size: 13px; letter-spacing: .12em; color: var(--color-accent); }
+.card h3 { font-size: 23px; line-height: 1.3; margin: var(--space-sm) 0 var(--space-md); }
+.card p { font-size: 16px; line-height: 1.65; margin: 0; color: var(--color-text-secondary); }
+.tabs { display: flex; gap: 8px; margin-top: var(--space-xl); flex-wrap: wrap; }
+.tab { flex: 1; min-width: 220px; text-align: left; cursor: pointer; background: rgba(255,255,255,.03); border: 1px solid rgba(244,241,236,.12); border-radius: 10px; padding: 18px 20px; color: var(--color-text-light); transition: border-color .2s, background .2s; font-family: inherit; }
 .tab:hover { border-color: rgba(244,241,236,.3); }
-
-.tab.active {
-  background: rgba(193,125,17,.1);
-  border-color: var(--color-accent);
-}
-
-.tab__n {
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: .12em;
-  color: var(--color-accent);
-}
-
-.tab__t {
-  font-family: "Playfair Display", serif;
-  font-size: 20px;
-  margin-top: 6px;
-}
-
-.tab__hint {
-  font-size: 13.5px;
-  color: rgba(244,241,236,.5);
-  margin-top: 4px;
-}
-
+.tab.active { background: rgba(193,125,17,.1); border-color: var(--color-accent); }
+.tab__n { font-weight: 700; font-size: 12px; letter-spacing: .12em; color: var(--color-accent); }
+.tab__t { font-family: "Playfair Display", serif; font-size: 20px; margin-top: 6px; }
+.tab__hint { font-size: 13.5px; color: rgba(244,241,236,.5); margin-top: 4px; }
 .panel { display: none; margin-top: var(--space-xl); }
-
-.panel.active {
-  display: block;
-  animation: fade .35s var(--ease);
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: none; }
-}
-
-.panel__grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 4px 40px;
-}
-
-.panel__item {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 12px 0;
-  border-top: 1px solid rgba(244,241,236,.08);
-  font-size: 16px;
-  color: rgba(244,241,236,.85);
-}
-
-.panel__item .dot {
-  color: var(--color-accent);
-  flex-shrink: 0;
-}
-
-.report-note {
-  margin-top: var(--space-2xl);
-  font-size: 17px;
-  color: rgba(244,241,236,.65);
-  max-width: 560px;
-}
-
-.sample {
-  display: grid;
-  grid-template-columns: 1fr .9fr;
-  gap: var(--space-3xl);
-  align-items: center;
-}
-
-.sample__img {
-  transform: rotate(-2deg);
-  box-shadow: 0 18px 50px rgba(0,0,0,.16);
-  border-radius: 3px;
-  transition: transform .4s var(--ease);
-}
-
+.panel.active { display: block; animation: fade .35s var(--ease); }
+@keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.panel__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 4px 40px; }
+.panel__item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid rgba(244,241,236,.08); font-size: 16px; color: rgba(244,241,236,.85); }
+.panel__item .dot { color: var(--color-accent); flex-shrink: 0; }
+.report-note { margin-top: var(--space-2xl); font-size: 17px; color: rgba(244,241,236,.65); max-width: 560px; }
+.sample { display: grid; grid-template-columns: 1fr .9fr; gap: var(--space-3xl); align-items: center; }
+.sample__img { transform: rotate(-2deg); box-shadow: 0 18px 50px rgba(0,0,0,.16); border-radius: 3px; transition: transform .4s var(--ease); }
 .sample__img:hover { transform: rotate(0); }
-
-.sample__caption {
-  font-size: 13.5px;
-  color: #9E9B96;
-  margin-top: var(--space-md);
-  text-align: center;
-}
-
-.timeline {
-  margin-top: var(--space-2xl);
-  position: relative;
-  padding-left: 0;
-}
-
-.tline {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: var(--space-lg);
-  position: relative;
-  padding-bottom: var(--space-2xl);
-}
-
+.sample__caption { font-size: 13.5px; color: #9E9B96; margin-top: var(--space-md); text-align: center; }
+.timeline { margin-top: var(--space-2xl); position: relative; padding-left: 0; }
+.tline { display: grid; grid-template-columns: 56px 1fr; gap: var(--space-lg); position: relative; padding-bottom: var(--space-2xl); }
 .tline:last-child { padding-bottom: 0; }
-
-.tline__num {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-border);
-  display: grid;
-  place-items: center;
-  background: var(--color-bg);
-  z-index: 1;
-  transition: border-color .3s, color .3s, background .3s;
-}
-
-.tline.in .tline__num {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.tline::before {
-  content: "";
-  position: absolute;
-  left: 27px;
-  top: 56px;
-  bottom: -8px;
-  width: 1.5px;
-  background: var(--color-border);
-}
-
+.tline__num { font-family: "Playfair Display", serif; font-size: 22px; width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--color-border); display: grid; place-items: center; background: var(--color-bg); z-index: 1; transition: border-color .3s, color .3s, background .3s; }
+.tline.in .tline__num { border-color: var(--color-accent); color: var(--color-accent); }
+.tline::before { content: ""; position: absolute; left: 27px; top: 56px; bottom: -8px; width: 1.5px; background: var(--color-border); }
 .tline:last-child::before { display: none; }
-
-.tline__t {
-  font-weight: 600;
-  font-size: 19px;
-  margin: 8px 0 6px;
-}
-
-.tline__b {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-  margin: 0;
-  max-width: 560px;
-}
-
+.tline__t { font-weight: 600; font-size: 19px; margin: 8px 0 6px; }
+.tline__b { font-size: 16px; color: var(--color-text-secondary); margin: 0; max-width: 560px; }
 .faq { margin-top: var(--space-xl); }
-
 .faq__item { border-bottom: 1px solid var(--color-border); }
-
-.faq__q {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  padding: 22px 0;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--color-text-primary);
-  transition: color .15s;
-}
-
+.faq__q { width: 100%; background: none; border: none; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: 22px 0; font-family: inherit; font-weight: 500; font-size: 18px; color: var(--color-text-primary); transition: color .15s; }
 .faq__q:hover { color: var(--color-accent); }
-
-.faq__icon {
-  font-size: 24px;
-  color: var(--color-accent);
-  flex-shrink: 0;
-  line-height: 1;
-  transition: transform .2s;
-}
-
+.faq__icon { font-size: 24px; color: var(--color-accent); flex-shrink: 0; line-height: 1; transition: transform .2s; }
 .faq__q[aria-expanded="true"] .faq__icon { transform: rotate(45deg); }
-
-.faq__a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .25s var(--ease);
-}
-
-.faq__a-inner {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  padding: 0 0 22px;
-  margin: 0;
-}
-
-.cta-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3xl);
-  align-items: center;
-}
-
+.faq__a { max-height: 0; overflow: hidden; transition: max-height .25s var(--ease); }
+.faq__a-inner { font-size: 17px; line-height: 1.7; color: var(--color-text-secondary); padding: 0 0 22px; margin: 0; }
+.cta-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: center; }
 .cta-copy h2 { color: var(--color-text-light); }
-
-.cta-copy p {
-  font-size: 19px;
-  color: rgba(244,241,236,.72);
-  margin-top: var(--space-md);
-}
-
-.cta-copy .reassure {
-  margin-top: var(--space-xl);
-  display: grid;
-  gap: 12px;
-}
-
-.cta-copy .reassure div {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 15px;
-  color: rgba(244,241,236,.8);
-}
-
-.cta-copy .reassure .tick {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.intake {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(244,241,236,.14);
-  border-radius: 12px;
-  padding: 30px;
-}
-
-.intake__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: var(--space-lg);
-}
-
-.intake__head h3 {
-  color: var(--color-text-light);
-  font-size: 22px;
-}
-
-.intake__head b {
-  color: var(--color-accent);
-  font-weight: 700;
-  font-size: 28px;
-}
-
+.cta-copy p { font-size: 19px; color: rgba(244,241,236,.72); margin-top: var(--space-md); }
+.cta-copy .reassure { margin-top: var(--space-xl); display: grid; gap: 12px; }
+.cta-copy .reassure div { display: flex; gap: 10px; align-items: center; font-size: 15px; color: rgba(244,241,236,.8); }
+.cta-copy .reassure .tick { color: var(--color-accent); font-weight: 700; }
+.intake { background: rgba(255,255,255,.05); border: 1px solid rgba(244,241,236,.14); border-radius: 12px; padding: 30px; }
+.intake__head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-lg); }
+.intake__head h3 { color: var(--color-text-light); font-size: 22px; }
+.intake__head b { color: var(--color-accent); font-weight: 700; font-size: 28px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
 .field { margin-bottom: var(--space-md); }
-
-.field__label {
-  display: block;
-  font-weight: 500;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: rgba(244,241,236,.65);
-  margin-bottom: 6px;
-}
-
-.field__input {
-  width: 100%;
-  background: rgba(255,255,255,.07);
-  border: 1.5px solid rgba(244,241,236,.18);
-  border-radius: 4px;
-  color: var(--color-text-light);
-  font-family: inherit;
-  font-size: 16px;
-  padding: 13px 15px;
-  transition: border-color .15s;
-}
-
+.field-row .field { margin-bottom: 0; }
+.field:last-child { margin-bottom: 0; }
+.field__label { display: block; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: rgba(244,241,236,.65); margin-bottom: 6px; }
+.field__input { width: 100%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(244,241,236,.18); border-radius: 4px; color: var(--color-text-light); font-family: inherit; font-size: 16px; padding: 11px 13px; transition: border-color .15s; }
 .field__input::placeholder { color: rgba(244,241,236,.38); }
-
-.field__input:focus {
-  outline: none;
-  border-color: rgba(193,125,17,.85);
-}
-
+.field__input:focus { outline: none; border-color: rgba(193,125,17,.85); }
 .intake .btn { margin-top: var(--space-sm); }
-
-.intake__meta {
-  text-align: center;
-  font-size: 13px;
-  color: rgba(244,241,236,.5);
-  margin: var(--space-md) 0 0;
-}
-
-.dock {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  z-index: 55;
-  background: rgba(14,27,42,.94);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(244,241,236,.12);
-  transform: translateY(110%);
-  transition: transform .35s var(--ease);
-  padding: 14px 24px;
-}
-
+.intake__meta { text-align: center; font-size: 13px; color: rgba(244,241,236,.5); margin: var(--space-md) 0 0; }
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; background: rgba(14,27,42,.94); backdrop-filter: blur(10px); border-top: 1px solid rgba(244,241,236,.12); transform: translateY(110%); transition: transform .35s var(--ease); padding: 14px 24px; }
 .dock.show { transform: none; }
-
-.dock__inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: var(--space-lg);
-}
-
+.dock__inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: var(--space-lg); }
 .dock__txt { color: var(--color-text-light); }
-
 .dock__txt b { color: var(--color-accent); }
-
-.dock__txt span {
-  display: block;
-  font-size: 12.5px;
-  color: rgba(244,241,236,.55);
-}
-
+.dock__txt span { display: block; font-size: 12.5px; color: rgba(244,241,236,.55); }
 .dock .btn { margin-left: auto; }
-
-.footer {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
-  border-top: 1px solid rgba(255,255,255,.06);
-  padding: var(--space-2xl) 24px calc(var(--space-2xl) + 60px);
-}
-
-.footer__grid {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: var(--space-xl);
-}
-
-.footer__brand-name {
-  font-family: "Playfair Display", serif;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.footer__brand-desc {
-  font-size: 15px;
-  color: rgba(244,241,236,.5);
-  max-width: 240px;
-  margin-top: var(--space-sm);
-}
-
-.footer__label {
-  font-weight: 500;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--color-accent);
-  margin-bottom: var(--space-md);
-}
-
+.footer { background: var(--color-bg-dark); color: var(--color-text-light); border-top: 1px solid rgba(255,255,255,.06); padding: var(--space-2xl) 24px calc(var(--space-2xl) + 60px); }
+.footer__grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--space-xl); }
+.footer__brand-name { font-family: "Playfair Display", serif; font-weight: 500; font-size: 18px; }
+.footer__brand-desc { font-size: 15px; color: rgba(244,241,236,.5); max-width: 240px; margin-top: var(--space-sm); }
+.footer__label { font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--color-accent); margin-bottom: var(--space-md); }
 .footer__links { list-style: none; margin: 0; padding: 0; }
-
 .footer__links li { margin-bottom: var(--space-sm); }
-
-.footer__links a {
-  font-size: 15px;
-  color: rgba(244,241,236,.6);
-  text-decoration: none;
-}
-
+.footer__links a { font-size: 15px; color: rgba(244,241,236,.6); text-decoration: none; }
 .footer__links a:hover { color: var(--color-text-light); }
-
-.footer__bottom {
-  max-width: var(--max);
-  margin: var(--space-2xl) auto 0;
-  border-top: 1px solid rgba(244,241,236,.1);
-  padding-top: var(--space-lg);
-}
-
-.footer__legal {
-  font-size: 13px;
-  color: rgba(244,241,236,.35);
-  margin: 0;
-  max-width: 680px;
-}
-
-.success {
-  max-width: 560px;
-  margin: 120px auto 0;
-  text-align: center;
-}
-
-.success h2 {
-  font-size: 38px;
-  margin-bottom: var(--space-lg);
-}
-
-.success p {
-  font-size: 17px;
-  color: var(--color-text-secondary);
-}
-
-.success .return {
-  display: inline-block;
-  margin-top: var(--space-lg);
-  color: var(--color-text-primary);
-  font-weight: 500;
-  text-decoration: none;
-}
-
+.footer__bottom { max-width: var(--max); margin: var(--space-2xl) auto 0; border-top: 1px solid rgba(244,241,236,.1); padding-top: var(--space-lg); }
+.footer__legal { font-size: 13px; color: rgba(244,241,236,.35); margin: 0; max-width: 680px; }
+.success { max-width: 560px; margin: 120px auto 0; text-align: center; }
+.success h2 { font-size: 38px; margin-bottom: var(--space-lg); }
+.success p { font-size: 17px; color: var(--color-text-secondary); }
+.success .return { display: inline-block; margin-top: var(--space-lg); color: var(--color-text-primary); font-weight: 500; text-decoration: none; }
 .success .return:hover { color: var(--color-accent); }
-
 @media (max-width: 980px) {
-  .hero__grid, .sample, .cta-wrap {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
+  .hero__grid, .sample, .cta-wrap { grid-template-columns: 1fr; gap: var(--space-2xl); }
   .compare, .panel__grid { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
   .strip { grid-template-columns: 1fr; gap: var(--space-lg); }
@@ -1004,7 +220,6 @@ h1, h2, h3 {
   .hero h1 { font-size: 40px; }
   .section { padding: var(--space-3xl) 24px; }
 }
-
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .hero { padding-top: 132px; }
@@ -1015,8 +230,24 @@ h1, h2, h3 {
   .dock { padding: 10px 16px; }
   .dock .btn { padding: 12px 18px; }
 }
-    
   </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"MedVerify","description":"Independent medical verification service for patients considering surgery in Mexico","areaServed":["US","CA"],"serviceType":"Medical credential verification","hasOfferCatalog":{"@type":"OfferCatalog","name":"Verification Report","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Full Medical Verification Report","description":"Doctor credentials, clinic status, and emergency protocol"}}]}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I know if a doctor in Mexico is really board certified?","acceptedAnswer":{"@type":"Answer","text":"In Mexico, board certification is issued by CONACEM and it expires — typically every five years. A doctor can have a valid SEP specialty license and an expired CONACEM certification. We verify both directly in each registry."}},
+    {"@type":"Question","name":"What does COFEPRIS do and what happens if a doctor or clinic has a sanction?","acceptedAnswer":{"@type":"Answer","text":"COFEPRIS is Mexico's federal health regulator. They issue alerts, sanctions, and clinic closures. We report what type of alert exists, when it was issued, and what it referred to."}},
+    {"@type":"Question","name":"What is the difference between a cédula profesional and a cédula de especialidad?","acceptedAnswer":{"@type":"Answer","text":"A cédula profesional confirms a medical degree. A cédula de especialidad confirms a recognized specialty residency. A doctor can have the first without the second. We verify both independently."}},
+    {"@type":"Question","name":"What happens if I have a complication during surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends on the clinic's distance from a hospital with an ICU. Your report includes the nearest hospital, estimated transfer time, and the nearest U.S. or Canadian consulate."}},
+    {"@type":"Question","name":"Is it safe to get surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on the specific doctor and clinic — which is why verification exists. The country is not the variable. The specific provider is."}},
+    {"@type":"Question","name":"How do I verify a Mexican doctor if I don't speak Spanish?","acceptedAnswer":{"@type":"Answer","text":"The registries are all in Spanish. We navigate them, interpret what we find, and deliver the report in plain English."}},
+    {"@type":"Question","name":"Can a doctor buy or fake credentials in Mexico?","acceptedAnswer":{"@type":"Answer","text":"SEP licenses have a unique number verifiable in the federal registry. But someone can present a real credential belonging to a similarly named person, or omit an expired specialty certification. Our homonym check catches these discrepancies."}},
+    {"@type":"Question","name":"How long does it take to receive the report?","acceptedAnswer":{"@type":"Answer","text":"72 hours from confirmed payment. We do not offer expedited service — the process requires the time it takes to be thorough."}},
+    {"@type":"Question","name":"What if you find something serious?","acceptedAnswer":{"@type":"Answer","text":"We report what we find and explain what it means. We do not make the decision for you — but you will have the information to make it yourself."}}
+  ]}
+  </script>
 </head>
 <body>
 
@@ -1034,11 +265,11 @@ h1, h2, h3 {
         <h1>You found a surgeon in Mexico. <em>Now find out who they really are.</em></h1>
         <p class="hero__sub">A human investigator verifies the doctor's license, the clinic's record, and what happens if something goes wrong — then sends you a plain-English report in 72 hours.</p>
         <div class="hero__cta">
-          <a href="#start" class="btn btn--primary">Start my verification <span class="arrow">→</span></a>
-          <div class="hero__price"><b>$97</b><span>One report. No subscription.</span></div>
+          <a href="#pricing" class="btn btn--primary">View Packages & Start <span class="arrow">→</span></a>
+          <div class="hero__price"><b>From $89</b><span>Essential, Compare & Premium packages</span></div>
         </div>
         <div class="hero__meta">
-          <span><span class="tick">✓</span> Delivered in 72 hours</span>
+          <span><span class="tick">✓</span> Delivered in 24h - 48h</span>
           <span><span class="tick">✓</span> Secure payment via Stripe</span>
           <span><span class="tick">✓</span> PDF in English</span>
         </div>
@@ -1266,28 +497,212 @@ h1, h2, h3 {
     </div>
   </section>
 
+  <!-- VERIFICATION PACKAGES & PRICING -->
+  <section class="section" id="pricing">
+    <div class="container" style="max-width:1200px">
+      <p class="label reveal">Verification Packages — Pricing & Scope</p>
+      <h2 class="section-title reveal">For US and Canadian patients traveling to Mexico for medical procedures.</h2>
+      <p class="lede reveal">Every report in English. Official Mexican government records.</p>
+
+      <div class="pricing-grid reveal" data-delay="1">
+        <!-- ESSENTIAL CARD -->
+        <article class="pkg-card">
+          <div class="pkg-card__header">
+            <h3 class="pkg-card__name">ESSENTIAL</h3>
+            <div class="pkg-card__price"><b>$89</b><span>/ report</span></div>
+            <div class="pkg-card__scope">1 doctor · 1 clinic · 1 city</div>
+            <p class="pkg-card__quote">"I've chosen my doctor. I need to confirm everything checks out before I wire the deposit."</p>
+          </div>
+          
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">DOCTOR</div>
+            <ul class="pkg-card__list">
+              <li class="check">Medical license — SEP</li>
+              <li class="check">Specialty license — SEP</li>
+              <li class="check">Board cert validity — CONACEM</li>
+              <li class="check">Legal complaints — Búho Legal</li>
+              <li class="check">Photo identity match</li>
+              <li class="check">Homonym search</li>
+              <li class="check">Experience vs. license date</li>
+              <li class="check">COFEPRIS alerts & blacklists</li>
+              <li class="check">University ranking</li>
+              <li class="check">Social reviews — TikTok, FB, IG, Google</li>
+              <li class="check">Global medical community membership</li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">CLINIC</div>
+            <ul class="pkg-card__list">
+              <li class="check">Age, news, COFEPRIS alerts, Reddit, reviews, JCI accreditation, domain</li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">CITY</div>
+            <ul class="pkg-card__list">
+              <li class="check">US & Canada travel advisory</li>
+              <li class="check">Nearest ICU hospital & transfer time</li>
+              <li class="check">Nearest US/Canadian consulate</li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">DELIVERY</div>
+            <ul class="pkg-card__list">
+              <li class="check">PDF report in English · 48h</li>
+              <li class="cross">Surgical team verification</li>
+              <li class="cross">Comparative report</li>
+              <li class="cross">Results call</li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__foot">
+            <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="essential">Get Essential — $89 <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- COMPARE CARD (MOST POPULAR) -->
+        <article class="pkg-card pkg-card--featured">
+          <div class="pkg-card__badge">★ MOST POPULAR</div>
+          <div class="pkg-card__header">
+            <h3 class="pkg-card__name">COMPARE</h3>
+            <div class="pkg-card__price"><b>$139</b><span>/ report</span></div>
+            <div class="pkg-card__scope">2 doctors · 2 clinics · 2 cities</div>
+            <p class="pkg-card__quote">"I'm deciding between two surgeons and want a clear recommendation on which one is safer."</p>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">DOCTOR — ×2</div>
+            <ul class="pkg-card__list">
+              <li class="check">All Essential checks — for both doctors</li>
+              <li class="check">All Essential clinic checks — for both clinics</li>
+              <li class="check">All Essential city checks — for both cities</li>
+              <li class="check">Side-by-side scoring table <span class="tag-new">NEW</span></li>
+              <li class="check">Recommendation: which doctor scores higher and why <span class="tag-new">NEW</span></li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">DELIVERY & SCOPE</div>
+            <ul class="pkg-card__list">
+              <li class="check">Combined PDF · 48h</li>
+              <li class="cross">Surgical team verification</li>
+              <li class="cross">Results call</li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__foot">
+            <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="compare">Get Compare — $139 <span class="arrow">→</span></a>
+            <div class="pkg-card__savings">Save $39 vs. 2× Essential</div>
+          </div>
+        </article>
+
+        <!-- PREMIUM CARD (MOST COMPLETE) -->
+        <article class="pkg-card pkg-card--premium">
+          <div class="pkg-card__badge pkg-card__badge--premium">✦ MOST COMPLETE</div>
+          <div class="pkg-card__header">
+            <h3 class="pkg-card__name">PREMIUM</h3>
+            <div class="pkg-card__price"><b>$199</b><span>/ report</span></div>
+            <div class="pkg-card__scope">3 doctors · 3 clinics · 3 cities</div>
+            <p class="pkg-card__quote">"I want the safest possible choice — verified surgeon AND a verified operating room team."</p>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">DOCTOR — ×3</div>
+            <ul class="pkg-card__list">
+              <li class="check">All Essential checks — for all 3 doctors</li>
+              <li class="check">All Essential clinic checks — for all 3 clinics</li>
+              <li class="check">All Essential city checks — for all 3 cities</li>
+              <li class="check">Full 3-way comparison with ranked scoring <span class="tag-exclusive">EXCLUSIVE</span></li>
+              <li class="check">Final recommendation: our top pick and why <span class="tag-exclusive">EXCLUSIVE</span></li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">PREMIUM EXTRAS</div>
+            <ul class="pkg-card__list">
+              <li class="check">15-min results call — we walk you through findings <span class="tag-exclusive">EXCLUSIVE</span></li>
+              <li class="check">Priority 24h delivery</li>
+              <li class="check">Re-verification of chosen doctor at 6 months</li>
+            </ul>
+          </div>
+
+          <!-- FREE SURGICAL TEAM VERIFICATION HIGHLIGHT -->
+          <div class="surgical-team-box">
+            <div class="surgical-team-box__title">🆓 FREE SURGICAL TEAM VERIFICATION</div>
+            <p class="surgical-team-box__p">Once you choose your surgeon, we verify your entire operating room team — at no extra cost. Nobody else does this.</p>
+            <ul class="pkg-card__list" style="margin-bottom:8px;">
+              <li class="check"><strong>💉 Anesthesiologist:</strong> SEP License & Specialty, CONACEM/Consejo, COFEPRIS, Búho Legal, Clinic Employed vs Freelance.</li>
+              <li class="check"><strong>👩‍⚕️ Surgical Nurse(s):</strong> SEP Nursing license, Specialty cert, ACLS / BLS cert, COFEPRIS.</li>
+            </ul>
+            <div class="surgical-team-box__warning">
+              ⚠️ <strong>Critical Safety Fact:</strong> The Matamoros 2023 deaths were caused by contaminated anesthetic — not the surgeon. Verifying your anesthesiologist is the single most overlooked safety check in medical tourism.
+            </div>
+          </div>
+
+          <div class="pkg-card__foot">
+            <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="premium">Get Premium — $199 <span class="arrow">→</span></a>
+            <div class="pkg-card__savings">Save $68 vs. 3× Essential + free surgical team verification</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- FINAL CTA + FORM -->
   <section class="section section--dark" id="start">
     <div class="container cta-wrap">
       <div class="cta-copy reveal">
         <p class="label">Start your verification</p>
-        <h2 class="section-title">Most people send us the name two or three weeks before surgery.</h2>
-        <p>Some send it the night before. The report takes 72 hours either way — but what you do with what you find takes time too.</p>
+        <h2 class="section-title">Most people send us the names two or three weeks before surgery.</h2>
+        <p>Some send them the night before. Fast delivery either way — but what you do with what you find takes time too.</p>
         <div class="reassure">
           <div><span class="tick">✓</span> A real human investigator, not an automated lookup</div>
-          <div><span class="tick">✓</span> Full refund if it isn't delivered within 72 hours</div>
-          <div><span class="tick">✓</span> Every finding cited so you can check it yourself</div>
+          <div><span class="tick">✓</span> Money-back guarantee if delayed</div>
+          <div><span class="tick">✓</span> Every finding cited with official government sources</div>
         </div>
       </div>
 
-      <form class="intake reveal" data-delay="1" data-intake novalidate>
-        <div class="intake__head"><h3>Get my report</h3><b>$97</b></div>
-        <div class="field"><label class="field__label" for="f-doctor">Doctor's full name</label><input class="field__input" id="f-doctor" name="doctor_name" type="text" placeholder="e.g. Dr. Carlos Mendoza García"></div>
-        <div class="field"><label class="field__label" for="f-clinic">Clinic or hospital</label><input class="field__input" id="f-clinic" name="clinic_name" type="text" placeholder="e.g. Clínica Santa Fe, Tijuana"></div>
-        <div class="field"><label class="field__label" for="f-city">City</label><input class="field__input" id="f-city" name="city" type="text" placeholder="e.g. Tijuana, Monterrey, Mexico City"></div>
-        <div class="field"><label class="field__label" for="f-proc">Procedure you're considering</label><input class="field__input" id="f-proc" name="procedure" type="text" placeholder="e.g. Gastric sleeve, knee replacement, rhinoplasty"></div>
-        <button class="btn btn--primary btn--full" type="submit">Continue to secure payment <span class="arrow">→</span></button>
-        <p class="intake__meta">Secure payment via Stripe · PDF delivered in English · 72-hour turnaround</p>
+      <form class="intake reveal" data-delay="1" data-intake novalidate id="intake-form">
+        <div class="intake__head">
+          <h3 id="form-pkg-name">Get Compare Report</h3>
+          <b id="form-pkg-price">$139</b>
+        </div>
+
+        <!-- Package Pills Selector -->
+        <div class="intake-pkg-selector">
+          <button type="button" class="intake-pkg-pill" data-package="essential">
+            Essential <span class="price">$89 (1 Doctor)</span>
+          </button>
+          <button type="button" class="intake-pkg-pill active" data-package="compare">
+            Compare <span class="price">$139 (2 Doctors)</span>
+          </button>
+          <button type="button" class="intake-pkg-pill" data-package="premium">
+            Premium <span class="price">$199 (3 Doctors)</span>
+          </button>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="f-proc">Procedure you're considering</label>
+          <input class="field__input" id="f-proc" name="procedure" type="text" placeholder="e.g. Gastric sleeve, knee replacement, rhinoplasty">
+        </div>
+
+        <!-- Dynamic Container for Doctor Fields -->
+        <div id="dynamic-doctor-fields">
+          <!-- Will be rendered dynamically via JS -->
+        </div>
+
+        <!-- Optional Surgical Team Field for Premium -->
+        <div class="field" id="team-notes-field" style="display:none;">
+          <label class="field__label" for="f-team-notes">Anesthesiologist or Surgical Team Notes (Optional)</label>
+          <input class="field__input" id="f-team-notes" name="team_notes" type="text" placeholder="e.g. Anesthesiologist name or clinic team details if known">
+        </div>
+
+        <button class="btn btn--primary btn--full" type="submit" id="form-submit-btn">
+          Continue to secure payment — <span id="btn-price">$139</span> <span class="arrow">→</span>
+        </button>
+        <p class="intake__meta">Secure payment via Stripe · PDF delivered in English · 24-48h turnaround</p>
       </form>
     </div>
   </section>
@@ -1296,7 +711,7 @@ h1, h2, h3 {
   <footer class="footer">
     <div class="footer__grid">
       <div><p class="footer__brand-name">MedVerify</p><p class="footer__brand-desc">Independent medical verification for patients considering care in Mexico.</p></div>
-      <div><p class="footer__label">What we verify</p><ul class="footer__links"><li><a href="#start">Doctor credentials</a></li><li><a href="#start">Clinic status</a></li><li><a href="#start">Emergency protocol</a></li></ul></div>
+      <div><p class="footer__label">What we verify</p><ul class="footer__links"><li><a href="#pricing">Doctor credentials</a></li><li><a href="#pricing">Clinic status</a></li><li><a href="#pricing">Emergency protocol</a></li></ul></div>
       <div><p class="footer__label">Legal</p><ul class="footer__links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li></ul></div>
     </div>
     <div class="footer__bottom"><p class="footer__legal">© 2025 MedVerify. We are an independent verification service. We are not a medical provider, insurer, or referral service. We do not recommend doctors or clinics.</p></div>
@@ -1305,190 +720,11 @@ h1, h2, h3 {
   <!-- STICKY DOCK CTA -->
   <div class="dock" id="dock">
     <div class="dock__inner">
-      <div class="dock__txt"><b>$97</b> — full verification<span>Doctor, clinic, and emergency protocol · 72-hour PDF</span></div>
-      <a href="#start" class="btn btn--primary btn--sm">Verify my doctor <span class="arrow">→</span></a>
+      <div class="dock__txt"><b id="dock-price">From $89</b> — full verification<span>Doctor, clinic, and emergency protocol · PDF report</span></div>
+      <a href="#pricing" class="btn btn--primary btn--sm">Choose package <span class="arrow">→</span></a>
     </div>
   </div>
 
-  <script>
-
-    /* ========================================
-   MedVerify — Main Script
-   ======================================== */
-
-(function () {
-  "use strict";
-
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ---------- Scroll reveal (IntersectionObserver) ---------- */
-  var reveals = document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window && !reduce) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-
-    reveals.forEach(function (el) { io.observe(el); });
-    document.querySelectorAll(".tline").forEach(function (el) { io.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add("in"); });
-    document.querySelectorAll(".tline").forEach(function (el) { el.classList.add("in"); });
-  }
-
-  /* ---------- Navbar + sticky dock ---------- */
-  var nav  = document.getElementById("nav");
-  var dock = document.getElementById("dock");
-
-  function onScroll() {
-    var y = window.scrollY;
-
-    if (nav) {
-      nav.classList.toggle("is-scrolled", y > 24);
-    }
-
-    if (dock) {
-      var start    = document.getElementById("start");
-      var pastHero = y > window.innerHeight * 0.7;
-      var atForm   = start && start.getBoundingClientRect().top < window.innerHeight * 0.85;
-      dock.classList.toggle("show", pastHero && !atForm);
-    }
-  }
-
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  /* ---------- Console animation ---------- */
-  var consoleEl = document.getElementById("console");
-
-  if (consoleEl) {
-    var rows   = consoleEl.querySelectorAll(".check");
-    var played = false;
-
-    function resolveRow(row) {
-      var status   = row.getAttribute("data-status");
-      var result   = row.getAttribute("data-result");
-      var icon     = row.querySelector(".check__icon");
-      var statusEl = row.querySelector(".check__status");
-
-      icon.classList.remove("pending");
-      icon.classList.add(status);
-      icon.textContent = status === "ok" ? "✓" : "!";
-
-      statusEl.classList.add(status);
-      statusEl.textContent = result;
-    }
-
-    function play() {
-      if (played) return;
-      played = true;
-
-      rows.forEach(function (row, i) {
-        setTimeout(function () { row.classList.add("show"); }, i * 380);
-
-        if (!reduce) {
-          setTimeout(function () { resolveRow(row); }, i * 380 + 720);
-        } else {
-          resolveRow(row);
-          row.classList.add("show");
-        }
-      });
-    }
-
-    if ("IntersectionObserver" in window) {
-      var cio = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting) { play(); cio.disconnect(); }
-        });
-      }, { threshold: 0.4 });
-      cio.observe(consoleEl);
-    } else {
-      play();
-    }
-  }
-
-  /* ---------- Tabs ---------- */
-  var tabBar = document.getElementById("tabs");
-
-  if (tabBar) {
-    var tabs   = tabBar.querySelectorAll(".tab");
-    var panels = document.querySelectorAll(".panel");
-
-    tabs.forEach(function (tab) {
-      tab.addEventListener("click", function () {
-        var idx = tab.getAttribute("data-tab");
-
-        tabs.forEach(function (t)   { t.classList.remove("active"); });
-        panels.forEach(function (p) { p.classList.remove("active"); });
-
-        tab.classList.add("active");
-        var panel = document.querySelector('.panel[data-panel="' + idx + '"]');
-        if (panel) panel.classList.add("active");
-      });
-    });
-  }
-
-  /* ---------- FAQ accordion ---------- */
-  var faq = document.getElementById("faq");
-
-  if (faq) {
-    var buttons = faq.querySelectorAll(".faq__q");
-
-    buttons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var panel = btn.nextElementSibling;
-        var open  = btn.getAttribute("aria-expanded") === "true";
-
-        buttons.forEach(function (o) {
-          o.setAttribute("aria-expanded", "false");
-          o.nextElementSibling.style.maxHeight = null;
-        });
-
-        if (!open) {
-          btn.setAttribute("aria-expanded", "true");
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-      });
-    });
-  }
-
-  /* ---------- Form intake ---------- */
-  function collect(form) {
-    return {
-      doctor_name: (form.doctor_name.value || "").trim(),
-      clinic_name: (form.clinic_name.value || "").trim(),
-      city:        (form.city.value        || "").trim(),
-      procedure:   (form.procedure.value   || "").trim(),
-      submitted_at: new Date().toISOString()
-    };
-  }
-
-  document.querySelectorAll("form[data-intake]").forEach(function (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      var data = collect(form);
-      if (!data.doctor_name && !data.clinic_name) {
-        form.querySelector(".field__input").focus();
-        return;
-      }
-
-      try {
-        sessionStorage.setItem("medverify_intake", JSON.stringify(data));
-      } catch (err) {
-        // silently fail if storage is unavailable
-      }
-
-      window.location.href = "success.html";
-    });
-  });
-
-})();
-  </script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
