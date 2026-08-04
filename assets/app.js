@@ -224,11 +224,37 @@
     });
 
     // Submit placeholder
-    if (submitBtn) submitBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      alert('Thank you! This would redirect to Stripe checkout.');
-      // Integración con pasarela de pago aquí
-    });
+// Configura tus links reales de Stripe Payment Links
+var stripeLinks = {
+  essential: 'https://buy.stripe.com/bJe6oG0LFh1Pbue1rp2cg02',   // ← pon aquí tu link real
+  compare:   'https://buy.stripe.com/fZufZg1PJ8vjcyi0nl2cg01',
+  premium:   'https://buy.stripe.com/9B6fZg65Z5j79m66LJ2cg00'
+};
+
+if (submitBtn) {
+  submitBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Validar el email (el navegador ya lo hace con required, pero por si acaso)
+    var emailInput = document.getElementById('f-email');
+    if (!emailInput || !emailInput.checkValidity()) {
+      emailInput.reportValidity();
+      return;
+    }
+
+    var link = stripeLinks[activePackage];
+    if (!link) {
+      alert('Error: no payment link configured.');
+      return;
+    }
+
+    // Agregar el email como parámetro a la URL
+    link += (link.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(emailInput.value.trim());
+
+    // Redirigir a Stripe
+    window.location.href = link;
+  });
+}
 
     // Init with Compare package
     updatePackageUI('compare');
