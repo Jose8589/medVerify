@@ -109,92 +109,79 @@
       });
     });
   }
-  /* ---------- Multi‑step wizard form ---------- */
-  const wizardForm = document.getElementById('intake-form');
-  if (wizardForm) {
-    const stepDots = wizardForm.querySelectorAll('.step-dot');
-    const steps = wizardForm.querySelectorAll('.form-step');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const submitBtn = document.getElementById('submit-btn');
-    const step2Container = document.getElementById('step-2-container');
-    const step3Container = document.getElementById('step-3-container');
-    const step3Wrapper = document.getElementById('step-3-wrapper');
-    const stepLine3 = document.getElementById('step-line-3');
-    const stepLine4 = document.getElementById('step-line-4');
-    const pkgPills = wizardForm.querySelectorAll('.intake-pkg-pill');
-    const pkgNameEl = document.getElementById('form-pkg-name');
-    const pkgPriceEl = document.getElementById('form-pkg-price');
-    const btnPrice = document.getElementById('btn-price');
-    const stepMeta = document.getElementById('step-meta');
 
-    let currentStep = 1;
-    let totalSteps = 4;
-    let activePackage = 'compare';
-    const packagePrices = { essential: 89, compare: 139, premium: 199 };
+  /* ---------- Multi‑step wizard form ---------- */
+  var wizardForm = document.getElementById('intake-form');
+  if (wizardForm) {
+    var stepDots = wizardForm.querySelectorAll('.step-dot');
+    var steps = wizardForm.querySelectorAll('.form-step');
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
+    var submitBtn = document.getElementById('submit-btn');
+    var step2Container = document.getElementById('step-2-container');
+    var step3Container = document.getElementById('step-3-container');
+    var step3Wrapper = document.getElementById('step-3-wrapper');
+    var stepLine3 = document.getElementById('step-line-3');
+    var stepLine4 = document.getElementById('step-line-4');
+    var pkgPills = wizardForm.querySelectorAll('.intake-pkg-pill');
+    var pkgNameEl = document.getElementById('form-pkg-name');
+    var pkgPriceEl = document.getElementById('form-pkg-price');
+    var btnPrice = document.getElementById('btn-price');
+    var stepMeta = document.getElementById('step-meta');
+
+    var currentStep = 1;
+    var totalSteps = 4;
+    var activePackage = 'compare';
+    var packagePrices = { essential: 89, compare: 139, premium: 199 };
 
     function updatePackageUI(pkg) {
-      const names = { essential: 'Essential Report', compare: 'Compare Report', premium: 'Premium Report' };
+      var names = { essential: 'Essential Report', compare: 'Compare Report', premium: 'Premium Report' };
       if (pkgNameEl) pkgNameEl.textContent = 'Get ' + names[pkg];
       if (pkgPriceEl) pkgPriceEl.textContent = '$' + packagePrices[pkg];
       if (btnPrice) btnPrice.textContent = '$' + packagePrices[pkg];
-      const dockPrice = document.getElementById('dock-price');
+      var dockPrice = document.getElementById('dock-price');
       if (dockPrice) dockPrice.textContent = 'From $' + packagePrices[pkg];
     }
 
     function renderDoctorFields(count) {
-      let html = '';
-      for (let i = 1; i <= count; i++) {
-        html += `
-          <div class="doctor-block">
-            <legend>Doctor ${i}</legend>
-            <div class="field-row">
-              <div class="field">
-                <label class="field__label">Full name</label>
-                <input class="field__input" name="doctor_${i}_name" type="text" placeholder="Dr. First Last">
-              </div>
-              <div class="field">
-                <label class="field__label">Specialty</label>
-                <input class="field__input" name="doctor_${i}_specialty" type="text" placeholder="e.g. Plastic Surgery">
-              </div>
-            </div>
-            <div class="field-row" style="margin-top:8px;">
-              <div class="field">
-                <label class="field__label">Clinic / Hospital name</label>
-                <input class="field__input" name="doctor_${i}_clinic" type="text" placeholder="e.g. Hospital Ángeles">
-              </div>
-              <div class="field">
-                <label class="field__label">City</label>
-                <input class="field__input" name="doctor_${i}_city" type="text" placeholder="e.g. Tijuana">
-              </div>
-            </div>
-          </div>
-        `;
+      var html = '';
+      for (var i = 1; i <= count; i++) {
+        html += '<div class="doctor-block">' +
+          '<legend>Doctor ' + i + '</legend>' +
+          '<div class="field-row">' +
+            '<div class="field"><label class="field__label">Full name</label><input class="field__input" name="doctor_' + i + '_name" type="text" placeholder="Dr. First Last"></div>' +
+            '<div class="field"><label class="field__label">Specialty</label><input class="field__input" name="doctor_' + i + '_specialty" type="text" placeholder="e.g. Plastic Surgery"></div>' +
+          '</div>' +
+          '<div class="field-row" style="margin-top:8px;">' +
+            '<div class="field"><label class="field__label">Clinic / Hospital name</label><input class="field__input" name="doctor_' + i + '_clinic" type="text" placeholder="e.g. Hospital Ángeles"></div>' +
+            '<div class="field"><label class="field__label">City</label><input class="field__input" name="doctor_' + i + '_city" type="text" placeholder="e.g. Tijuana"></div>' +
+          '</div>' +
+        '</div>';
       }
       if (step2Container) step2Container.innerHTML = html;
     }
 
     function updateStepVisibility() {
-      const isPremium = activePackage === 'premium';
+      var isPremium = activePackage === 'premium';
       if (step3Container) step3Container.style.display = isPremium ? '' : 'none';
       if (step3Wrapper) step3Wrapper.style.display = isPremium ? '' : 'none';
       if (stepLine3) stepLine3.style.display = isPremium ? '' : 'none';
       if (stepLine4) stepLine4.style.display = isPremium ? '' : 'none';
       totalSteps = isPremium ? 4 : 3;
-      stepDots.forEach(dot => {
-        const s = parseInt(dot.dataset.step);
+      stepDots.forEach(function (dot) {
+        var s = parseInt(dot.dataset.step);
         dot.style.display = s > totalSteps ? 'none' : '';
       });
     }
 
     function goToStep(step) {
       currentStep = Math.min(Math.max(step, 1), totalSteps);
-      steps.forEach(s => s.classList.remove('active-step'));
-      const activeEl = wizardForm.querySelector(`.form-step[data-step="${currentStep}"]`);
+      steps.forEach(function (s) { s.classList.remove('active-step'); });
+      var activeEl = wizardForm.querySelector('.form-step[data-step="' + currentStep + '"]');
       if (activeEl) activeEl.classList.add('active-step');
 
-      stepDots.forEach(dot => {
-        const s = parseInt(dot.dataset.step);
+      stepDots.forEach(function (dot) {
+        var s = parseInt(dot.dataset.step);
         dot.classList.remove('active', 'done');
         if (s < currentStep) dot.classList.add('done');
         if (s === currentStep) dot.classList.add('active');
@@ -214,12 +201,12 @@
       }
     }
 
-    // Pills
-    pkgPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        pkgPills.forEach(p => p.classList.remove('active'));
+    // Package pills click (dentro del formulario)
+    pkgPills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        pkgPills.forEach(function (p) { p.classList.remove('active'); });
         pill.classList.add('active');
-        const pkg = pill.dataset.package;
+        var pkg = pill.getAttribute('data-package');
         activePackage = pkg;
         updatePackageUI(pkg);
         renderDoctorFields({ essential: 1, compare: 2, premium: 3 }[pkg]);
@@ -228,25 +215,49 @@
       });
     });
 
-    // Navegación
-    if (prevBtn) prevBtn.addEventListener('click', () => {
+    // Navigation buttons
+    if (prevBtn) prevBtn.addEventListener('click', function () {
       if (currentStep > 1) goToStep(currentStep - 1);
     });
-    if (nextBtn) nextBtn.addEventListener('click', () => {
+    if (nextBtn) nextBtn.addEventListener('click', function () {
       if (currentStep < totalSteps) goToStep(currentStep + 1);
     });
 
-    // Submit (placeholder)
-    if (submitBtn) submitBtn.addEventListener('click', (e) => {
+    // Submit placeholder
+    if (submitBtn) submitBtn.addEventListener('click', function (e) {
       e.preventDefault();
       alert('Thank you! This would redirect to Stripe checkout.');
-      // Aquí integrarías con tu pasarela de pago
+      // Integración con pasarela de pago aquí
     });
 
-    // Inicialización
+    // Init with Compare package
     updatePackageUI('compare');
     renderDoctorFields(2);
     updateStepVisibility();
     goToStep(1);
+
+    // 👇 NUEVO: Sincronizar los botones de las tarjetas de precios con el formulario
+    document.querySelectorAll('.select-pkg-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var pkg = this.getAttribute('data-package');
+        if (!pkg || !packagePrices[pkg]) return;
+
+        // Activar la píldora correspondiente en el paso 1
+        pkgPills.forEach(function (pill) {
+          pill.classList.toggle('active', pill.getAttribute('data-package') === pkg);
+        });
+
+        // Actualizar el estado y la UI del formulario
+        activePackage = pkg;
+        updatePackageUI(pkg);
+        renderDoctorFields({ essential: 1, compare: 2, premium: 3 }[pkg]);
+        updateStepVisibility();
+        goToStep(1);
+
+        // Opcional: scroll más suave (descomenta las dos líneas siguientes si lo prefieres)
+        // e.preventDefault();
+        // document.getElementById('start').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
   }
- })();
+})();
