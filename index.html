@@ -174,10 +174,8 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
 .cta-copy .reassure { margin-top: var(--space-xl); display: grid; gap: 12px; }
 .cta-copy .reassure div { display: flex; gap: 10px; align-items: center; font-size: 15px; color: rgba(244,241,236,.8); }
 .cta-copy .reassure .tick { color: var(--color-accent); font-weight: 700; }
-
-/* ---------- FORM STEPS ---------- */
 .intake { background: rgba(255,255,255,.05); border: 1px solid rgba(244,241,236,.14); border-radius: 12px; padding: 30px; }
-.intake__head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-md); }
+.intake__head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-lg); }
 .intake__head h3 { color: var(--color-text-light); font-size: 22px; }
 .intake__head b { color: var(--color-accent); font-weight: 700; font-size: 28px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
@@ -188,31 +186,8 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
 .field__input { width: 100%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(244,241,236,.18); border-radius: 4px; color: var(--color-text-light); font-family: inherit; font-size: 16px; padding: 11px 13px; transition: border-color .15s; }
 .field__input::placeholder { color: rgba(244,241,236,.38); }
 .field__input:focus { outline: none; border-color: rgba(193,125,17,.85); }
-
-.form-steps { position: relative; }
-.step-indicator { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); }
-.step-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(244,241,236,.3); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: rgba(244,241,236,.4); background: transparent; transition: all .2s; }
-.step-dot.active { border-color: var(--color-accent); color: var(--color-accent); background: rgba(193,125,17,.15); }
-.step-dot.done { border-color: var(--color-ok); color: var(--color-ok); background: rgba(62,124,90,.2); }
-.step-line { flex: 1; height: 1px; background: rgba(244,241,236,.15); margin: 0 4px; }
-.step-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: rgba(244,241,236,.5); text-align: center; margin-top: 4px; }
-
-.form-step { display: none; }
-.form-step.active-step { display: block; animation: fade .25s ease; }
-.step-nav { display: flex; justify-content: space-between; margin-top: var(--space-md); gap: 8px; }
-.step-nav .btn { min-width: 100px; }
-
-.doctor-block { border: 1px solid rgba(244,241,236,.12); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
-.doctor-block legend { font-size: 13px; font-weight: 500; color: var(--color-accent); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
-
-.intake-pkg-selector { display: flex; gap: 8px; margin-bottom: var(--space-md); flex-wrap: wrap; }
-.intake-pkg-pill { background: rgba(255,255,255,.05); border: 1px solid rgba(244,241,236,.2); border-radius: 20px; padding: 8px 16px; font-size: 14px; color: var(--color-text-light); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background .2s, border-color .2s; }
-.intake-pkg-pill.active { background: rgba(193,125,17,.15); border-color: var(--color-accent); font-weight: 600; }
-.intake-pkg-pill .price { font-size: 12px; color: rgba(244,241,236,.6); }
-.intake-pkg-pill.active .price { color: var(--color-accent); }
-
+.intake .btn { margin-top: var(--space-sm); }
 .intake__meta { text-align: center; font-size: 13px; color: rgba(244,241,236,.5); margin: var(--space-md) 0 0; }
-
 .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; background: rgba(14,27,42,.94); backdrop-filter: blur(10px); border-top: 1px solid rgba(244,241,236,.12); transform: translateY(110%); transition: transform .35s var(--ease); padding: 14px 24px; }
 .dock.show { transform: none; }
 .dock__inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: var(--space-lg); }
@@ -443,23 +418,23 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
   <!-- SAMPLE REPORT -->
   <section class="section">
     <div class="container sample">
-      <figure class="reveal" style="margin:0">
-        <a href="assets/sample-report.pdf" target="_blank" rel="noopener" aria-label="Open sample report PDF">
-          <img class="sample__img" 
-               src="assets/sample-report-page1.jpg" 
-               alt="First page of a sample MedVerify report – redacted" 
-               width="640" 
-               height="828" 
-               loading="lazy"
-               style="background:#fff; width:100%; height:auto; cursor:pointer;">
-        </a>
-        <figcaption class="sample__caption" style="margin-top:12px;">
-          Sample report — all identifying information redacted<br>
-          <a href="assets/sample-report.pdf" target="_blank" class="btn btn--ghost-light" style="display:inline-flex; margin-top:8px; font-size:14px; padding:8px 16px;">
-            📄 View full sample PDF <span class="arrow">→</span>
-          </a>
-        </figcaption>
-      </figure>
+ <figure class="reveal" style="margin:0">
+  <a href="assets/reporte-premium-v4.pdf" target="_blank" rel="noopener" aria-label="Open sample report PDF">
+    <img class="sample__img" 
+         src="assets/reporte-premium-v4-1.png" 
+         alt="First page of a sample MedVerify report – redacted" 
+         width="640" 
+         height="828" 
+         loading="lazy"
+         style="background:#fff; width:100%; height:auto; cursor:pointer;">
+  </a>
+  <figcaption class="sample__caption" style="margin-top:12px;">
+    Sample report — all identifying information redacted<br>
+    <a href="assets/reporte-premium-v4.pdf" target="_blank" class="btn btn--ghost-light" style="display:inline-flex; margin-top:8px; font-size:14px; padding:8px 16px;">
+      📄 View full sample PDF <span class="arrow">→</span>
+    </a>
+  </figcaption>
+</figure>
       <div class="reveal" data-delay="1">
         <p class="label">What you receive</p>
         <h2 class="section-title">A document you can read, share with your family, and act on.</h2>
@@ -656,7 +631,7 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
     </div>
   </section>
 
-  <!-- FINAL CTA + MULTI-STEP FORM -->
+  <!-- FINAL CTA + FORM -->
   <section class="section section--dark" id="start">
     <div class="container cta-wrap">
       <div class="cta-copy reveal">
@@ -670,76 +645,45 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
         </div>
       </div>
 
-      <form class="intake reveal" data-delay="1" novalidate id="intake-form">
+      <form class="intake reveal" data-delay="1" data-intake novalidate id="intake-form">
         <div class="intake__head">
           <h3 id="form-pkg-name">Get Compare Report</h3>
           <b id="form-pkg-price">$139</b>
         </div>
 
-        <!-- STEP INDICATOR -->
-        <div class="form-steps">
-          <div class="step-indicator" id="step-indicator">
-            <div>
-              <div class="step-dot active" data-step="1">1</div>
-              <div class="step-label">Package</div>
-            </div>
-            <div class="step-line"></div>
-            <div>
-              <div class="step-dot" data-step="2">2</div>
-              <div class="step-label">Doctor(s)</div>
-            </div>
-            <div class="step-line" id="step-line-3"></div>
-            <div id="step-3-wrapper" style="display:none;">
-              <div class="step-dot" data-step="3">3</div>
-              <div class="step-label">Team</div>
-            </div>
-            <div class="step-line" id="step-line-4"></div>
-            <div>
-              <div class="step-dot" data-step="4">4</div>
-              <div class="step-label">Pay</div>
-            </div>
-          </div>
-
-          <!-- STEP 1: PACKAGE + PROCEDURE -->
-          <div class="form-step active-step" data-step="1">
-            <div class="intake-pkg-selector">
-              <button type="button" class="intake-pkg-pill" data-package="essential">Essential <span class="price">$89 (1 Doctor)</span></button>
-              <button type="button" class="intake-pkg-pill active" data-package="compare">Compare <span class="price">$139 (2 Doctors)</span></button>
-              <button type="button" class="intake-pkg-pill" data-package="premium">Premium <span class="price">$199 (3 Doctors)</span></button>
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-proc">Procedure you're considering</label>
-              <input class="field__input" id="f-proc" name="procedure" type="text" placeholder="e.g. Gastric sleeve, knee replacement, rhinoplasty">
-            </div>
-          </div>
-
-          <!-- STEP 2: DOCTOR(S) + CLINIC -->
-          <div class="form-step" data-step="2" id="step-2-container">
-            <!-- dynamically populated -->
-          </div>
-
-          <!-- STEP 3: TEAM (only Premium) -->
-          <div class="form-step" data-step="3" id="step-3-container" style="display:none;">
-            <div class="field">
-              <label class="field__label" for="f-team-notes">Anesthesiologist or Surgical Team Notes (Optional)</label>
-              <input class="field__input" id="f-team-notes" name="team_notes" type="text" placeholder="e.g. Anesthesiologist name or clinic team details if known">
-            </div>
-            <p class="intake__meta" style="text-align:left;">This helps us verify your operating room team — at no extra cost.</p>
-          </div>
-
-          <!-- STEP 4: CONFIRM & PAY -->
-          <div class="form-step" data-step="4">
-            <p style="color:rgba(244,241,236,.8);">Ready to submit? Your report will be delivered as a PDF in English within 24-48h.</p>
-          </div>
+        <!-- Package Pills Selector -->
+        <div class="intake-pkg-selector">
+          <button type="button" class="intake-pkg-pill" data-package="essential">
+            Essential <span class="price">$89 (1 Doctor)</span>
+          </button>
+          <button type="button" class="intake-pkg-pill active" data-package="compare">
+            Compare <span class="price">$139 (2 Doctors)</span>
+          </button>
+          <button type="button" class="intake-pkg-pill" data-package="premium">
+            Premium <span class="price">$199 (3 Doctors)</span>
+          </button>
         </div>
 
-        <!-- NAVIGATION BUTTONS -->
-        <div class="step-nav">
-          <button type="button" class="btn btn--ghost-light" id="prev-btn" style="visibility:hidden;">← Back</button>
-          <button type="button" class="btn btn--primary" id="next-btn">Next →</button>
-          <button type="submit" class="btn btn--primary" id="submit-btn" style="display:none;">Continue to secure payment — <span id="btn-price">$139</span> <span class="arrow">→</span></button>
+        <div class="field">
+          <label class="field__label" for="f-proc">Procedure you're considering</label>
+          <input class="field__input" id="f-proc" name="procedure" type="text" placeholder="e.g. Gastric sleeve, knee replacement, rhinoplasty">
         </div>
-        <p class="intake__meta" id="step-meta">Secure payment via Stripe · PDF delivered in English · 24-48h turnaround</p>
+
+        <!-- Dynamic Container for Doctor Fields -->
+        <div id="dynamic-doctor-fields">
+          <!-- Will be rendered dynamically via JS -->
+        </div>
+
+        <!-- Optional Surgical Team Field for Premium -->
+        <div class="field" id="team-notes-field" style="display:none;">
+          <label class="field__label" for="f-team-notes">Anesthesiologist or Surgical Team Notes (Optional)</label>
+          <input class="field__input" id="f-team-notes" name="team_notes" type="text" placeholder="e.g. Anesthesiologist name or clinic team details if known">
+        </div>
+
+        <button class="btn btn--primary btn--full" type="submit" id="form-submit-btn">
+          Continue to secure payment — <span id="btn-price">$139</span> <span class="arrow">→</span>
+        </button>
+        <p class="intake__meta">Secure payment via Stripe · PDF delivered in English · 24-48h turnaround</p>
       </form>
     </div>
   </section>
@@ -762,171 +706,6 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
     </div>
   </div>
 
-  <script>
-    (function() {
-      const form = document.getElementById('intake-form');
-      const stepDots = document.querySelectorAll('.step-dot');
-      const steps = document.querySelectorAll('.form-step');
-      const prevBtn = document.getElementById('prev-btn');
-      const nextBtn = document.getElementById('next-btn');
-      const submitBtn = document.getElementById('submit-btn');
-      const step2Container = document.getElementById('step-2-container');
-      const step3Container = document.getElementById('step-3-container');
-      const step3Wrapper = document.getElementById('step-3-wrapper');
-      const stepLine3 = document.getElementById('step-line-3');
-      const stepLine4 = document.getElementById('step-line-4');
-      const pkgPills = document.querySelectorAll('.intake-pkg-pill');
-      const pkgNameEl = document.getElementById('form-pkg-name');
-      const pkgPriceEl = document.getElementById('form-pkg-price');
-      const btnPrice = document.getElementById('btn-price');
-      const stepMeta = document.getElementById('step-meta');
-
-      let currentStep = 1;
-      let totalSteps = 4; // will adjust based on package
-      let activePackage = 'compare'; // default
-      let packagePrices = { essential: 89, compare: 139, premium: 199 };
-
-      // Initialize
-      updatePackageUI('compare');
-      renderDoctorFields(2);
-      updateStepVisibility();
-
-      // Package pills
-      pkgPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          pkgPills.forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          const pkg = pill.dataset.package;
-          activePackage = pkg;
-          updatePackageUI(pkg);
-          const doctorCount = { essential: 1, compare: 2, premium: 3 }[pkg];
-          renderDoctorFields(doctorCount);
-          updateStepVisibility();
-          goToStep(1); // reset to step 1
-        });
-      });
-
-      function updatePackageUI(pkg) {
-        const names = { essential: 'Essential Report', compare: 'Compare Report', premium: 'Premium Report' };
-        pkgNameEl.textContent = 'Get ' + names[pkg];
-        pkgPriceEl.textContent = '$' + packagePrices[pkg];
-        btnPrice.textContent = '$' + packagePrices[pkg];
-        // update dock
-        const dockPrice = document.getElementById('dock-price');
-        if(dockPrice) dockPrice.textContent = 'From $' + packagePrices[pkg];
-      }
-
-      function renderDoctorFields(count) {
-        let html = '';
-        for (let i = 1; i <= count; i++) {
-          html += `
-            <div class="doctor-block">
-              <legend>Doctor ${i}</legend>
-              <div class="field-row">
-                <div class="field">
-                  <label class="field__label">Full name</label>
-                  <input class="field__input" name="doctor_${i}_name" type="text" placeholder="Dr. First Last">
-                </div>
-                <div class="field">
-                  <label class="field__label">Specialty</label>
-                  <input class="field__input" name="doctor_${i}_specialty" type="text" placeholder="e.g. Plastic Surgery">
-                </div>
-              </div>
-              <div class="field-row" style="margin-top:8px;">
-                <div class="field">
-                  <label class="field__label">Clinic / Hospital name</label>
-                  <input class="field__input" name="doctor_${i}_clinic" type="text" placeholder="e.g. Hospital Ángeles">
-                </div>
-                <div class="field">
-                  <label class="field__label">City</label>
-                  <input class="field__input" name="doctor_${i}_city" type="text" placeholder="e.g. Tijuana">
-                </div>
-              </div>
-            </div>
-          `;
-        }
-        step2Container.innerHTML = html;
-      }
-
-      function updateStepVisibility() {
-        const isPremium = activePackage === 'premium';
-        if (isPremium) {
-          step3Container.style.display = '';
-          step3Wrapper.style.display = '';
-          stepLine3.style.display = '';
-          stepLine4.style.display = '';
-          totalSteps = 4;
-        } else {
-          step3Container.style.display = 'none';
-          step3Wrapper.style.display = 'none';
-          stepLine3.style.display = 'none';
-          stepLine4.style.display = 'none';
-          totalSteps = 3;
-        }
-        // update step dots
-        stepDots.forEach(dot => {
-          const s = parseInt(dot.dataset.step);
-          if (s > totalSteps) {
-            dot.style.display = 'none';
-          } else {
-            dot.style.display = '';
-          }
-        });
-      }
-
-      function goToStep(step) {
-        currentStep = Math.min(Math.max(step, 1), totalSteps);
-        steps.forEach(s => s.classList.remove('active-step'));
-        const activeStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
-        if (activeStepEl) activeStepEl.classList.add('active-step');
-
-        // Update step dots
-        stepDots.forEach(dot => {
-          const s = parseInt(dot.dataset.step);
-          dot.classList.remove('active', 'done');
-          if (s < currentStep) dot.classList.add('done');
-          if (s === currentStep) dot.classList.add('active');
-        });
-
-        // Buttons
-        if (currentStep === 1) {
-          prevBtn.style.visibility = 'hidden';
-        } else {
-          prevBtn.style.visibility = 'visible';
-        }
-
-        if (currentStep === totalSteps) {
-          nextBtn.style.display = 'none';
-          submitBtn.style.display = 'inline-flex';
-          stepMeta.style.display = 'none';
-        } else {
-          nextBtn.style.display = 'inline-flex';
-          submitBtn.style.display = 'none';
-          stepMeta.style.display = '';
-        }
-      }
-
-      prevBtn.addEventListener('click', () => {
-        if (currentStep > 1) goToStep(currentStep - 1);
-      });
-
-      nextBtn.addEventListener('click', () => {
-        if (currentStep < totalSteps) {
-          goToStep(currentStep + 1);
-        }
-      });
-
-      // Handle submit (placeholder)
-      submitBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('Thank you! This would redirect to Stripe checkout. In production, integrate with your payment processor.');
-        // Here you would submit the form data via fetch or redirect to Stripe.
-      });
-
-      // Show step 1 on load
-      goToStep(1);
-    })();
-  </script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
-
