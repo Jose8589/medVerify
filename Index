@@ -363,22 +363,21 @@
       </ul>
     </div>
 
-    <!-- Surgical Team Box – renovado, sin alarmismo, con tono de beneficio premium -->
-    <div class="surgical-team-box">
-      <div class="surgical-team-box__title">⭐ FREE SURGICAL TEAM VERIFICATION</div>
-      <p class="surgical-team-box__p">
-        Once you choose your surgeon, we verify your anesthesiologist and surgical nurses 
-        <strong>at no extra cost</strong> — because your team is your safety net.
-      </p>
-      <ul class="pkg-card__list">
-        <li class="check"><strong>Anesthesiologist:</strong> SEP license, specialty, CONACEM, COFEPRIS, Búho Legal &amp; employment status</li>
-        <li class="check"><strong>Surgical nurses:</strong> SEP nursing license, specialty cert, ACLS/BLS &amp; COFEPRIS</li>
-      </ul>
-      <div class="surgical-team-box__warning">
-        💡 <strong>Why we do this:</strong> Most medical tourists overlook the anesthesia provider. 
-        We verify them for free—it's the critical safety gap that no one else checks.
-      </div>
-    </div>
+<div class="surgical-team-box">
+  <div class="surgical-team-box__title">⭐ FREE SURGICAL TEAM VERIFICATION</div>
+  <p class="surgical-team-box__p">
+    <strong>Your safety net beyond the surgeon.</strong> We verify the credentials, licensing, and sanction history of your 
+    anesthesiologist and surgical nurses—<strong>at no extra cost</strong>.
+  </p>
+  <ul class="pkg-card__list" style="margin-top: 6px;">
+    <li class="check"><strong>Anesthesiologist</strong> — License, specialty &amp; disciplinary record</li>
+    <li class="check"><strong>Surgical Nurses</strong> — Licensing &amp; emergency certifications (ACLS/BLS)</li>
+  </ul>
+  <div style="margin-top: 10px; font-size: 12px; color: var(--color-text-secondary); border-top: 1px dashed rgba(193,125,17,0.25); padding-top: 8px;">
+    💡 <strong>Why we include this:</strong> The team around you is just as critical as the surgeon. 
+    We verify them so you don't have to.
+  </div>
+</div>
 
     <div class="pkg-card__foot">
       <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="premium">Get Premium — $199 <span class="arrow">→</span></a>
