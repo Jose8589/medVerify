@@ -509,7 +509,7 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
 .cta-copy .reassure .tick { color: var(--color-accent); font-weight: 700; }
 
 .intake { background: rgba(255,255,255,.05); border: 1px solid rgba(244,241,236,.14); border-radius: 12px; padding: 30px; }
-.intake__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md); }
+.intake__head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-md); }
 .intake__head h3 { color: var(--color-text-light); font-size: 22px; margin: 0; }
 .intake__head b { color: var(--color-accent); font-weight: 700; font-size: 28px; }
 
@@ -593,7 +593,7 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
 .field__input { width: 100%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(244,241,236,.18); border-radius: 4px; color: var(--color-text-light); font-family: inherit; font-size: 16px; padding: 11px 13px; transition: border-color .15s; }
 .field__input::placeholder { color: rgba(244,241,236,.38); }
 .field__input:focus { outline: none; border-color: rgba(193,125,17,.85); }
-.intake .btn { margin-top: var(--space-md); }
+.intake .btn { margin-top: var(--space-sm); }
 .intake__meta { text-align: center; font-size: 13px; color: rgba(244,241,236,.5); margin: var(--space-md) 0 0; }
 
 /* ============================================================
@@ -636,6 +636,25 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
 .success p { font-size: 17px; color: var(--color-text-secondary); }
 .success .return { display: inline-block; margin-top: var(--space-lg); color: var(--color-text-primary); font-weight: 500; text-decoration: none; }
 .success .return:hover { color: var(--color-accent); }
+
+/* ============================================================
+   FORM STEPS (multi-step form)
+   ============================================================ */
+.form-steps { position: relative; }
+.step-indicator { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); }
+.step-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(244,241,236,.3); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: rgba(244,241,236,.4); background: transparent; transition: all .2s; }
+.step-dot.active { border-color: var(--color-accent); color: var(--color-accent); background: rgba(193,125,17,.15); }
+.step-dot.done { border-color: var(--color-ok); color: var(--color-ok); background: rgba(62,124,90,.2); }
+.step-line { flex: 1; height: 1px; background: rgba(244,241,236,.15); margin: 0 4px; }
+.step-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: rgba(244,241,236,.5); text-align: center; margin-top: 4px; }
+
+.form-step { display: none; }
+.form-step.active-step { display: block; animation: fade .25s ease; }
+.step-nav { display: flex; justify-content: space-between; margin-top: var(--space-md); gap: 8px; }
+.step-nav .btn { min-width: 100px; }
+
+.doctor-block { border: 1px solid rgba(244,241,236,.12); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+.doctor-block legend { font-size: 13px; font-weight: 500; color: var(--color-accent); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
 
 /* ============================================================
    Responsive
