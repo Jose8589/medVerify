@@ -446,14 +446,6 @@ h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; ma
   font-size: 14.5px;
 }
 
-.pkg-card__savings {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-ok);
-  text-align: center;
-  margin-top: 8px;
-}
-
 /* Surgical Team Highlight Box */
 .surgical-team-box {
   background: rgba(193,125,17,.06);
