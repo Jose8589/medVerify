@@ -34,12 +34,31 @@
   </footer>
 
   <script>
-    // Show a placeholder order number. Replace with the real order
-    // id returned by the Stripe webhook / backend at launch.
-    (function () {
-      var el = document.getElementById("order-number");
-      var n = "MV-" + Date.now().toString().slice(-6);
-      if (el) el.textContent = n;
+    
+    
+    (function() {
+      var data = localStorage.getItem('medverify_form_data');
+      if (!data) return; // no hay datos, probablemente ya se enviaron
+
+      var parsed = JSON.parse(data);
+
+      // URL de tu Google Apps Script
+      var scriptURL = 'https://script.google.com/macros/s/AKfycbz9-jSI9RfL1MhBI8CgWBB8G-RcnI3m_hDx0tLsMYPVaKgS9ToJg-rdPhCCzx5YozYjOA/exec'; // ← pon aquí tu URL real
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // importante para evitar problemas de CORS
+        headers: { 'Content-Type': 'text/plain' }, // usar text/plain evita preflight
+        body: JSON.stringify(parsed)
+      })
+      .then(function() {
+        // Una vez enviado, limpiar localStorage
+        localStorage.removeItem('medverify_form_data');
+      })
+      .catch(function(error) {
+        console.error('Error sending data:', error);
+        // Podrías guardar los datos en otra parte o mostrar un aviso
+      });
     })();
   </script>
 </body>
