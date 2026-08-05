@@ -37,6 +37,27 @@ img { max-width: 100%; display: block; }
 a { color: inherit; }
 h1,h2,h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; margin: 0; }
 
+
+
+
+.pkg-card--premium .pkg-card__list li:last-child {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+.pkg-card--premium .pkg-card__list li:last-child::before {
+  color: var(--color-accent);
+}
+
+
+
+
+
+
+
+
+
+
+
 /* ---------- layout ---------- */
 .section { padding: var(--space-4xl) 24px; }
 .container { max-width: var(--max); margin: 0 auto; }
