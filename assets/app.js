@@ -226,7 +226,7 @@
     // Submit placeholder
 // Configura tus links reales de Stripe Payment Links
 var stripeLinks = {
-  essential: 'https://buy.stripe.com/bJe6oG0LFh1Pbue1rp2cg02',   // ← pon aquí tu link real
+  essential: 'https://buy.stripe.com/test_9B6fZjb5UeMDaxf5l0bfO00',   // ← pon aquí tu link real https://buy.stripe.com/bJe6oG0LFh1Pbue1rp2cg02
   compare:   'https://buy.stripe.com/fZufZg1PJ8vjcyi0nl2cg01',
   premium:   'https://buy.stripe.com/9B6fZg65Z5j79m66LJ2cg00'
 };
