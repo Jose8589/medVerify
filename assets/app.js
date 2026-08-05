@@ -251,6 +251,38 @@ if (submitBtn) {
     // Agregar el email como parámetro a la URL
     link += (link.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(emailInput.value.trim());
 
+
+// Recoger datos del formulario y guardarlos en localStorage
+function collectFormData() {
+  var data = {
+    package: activePackage,
+    procedure: document.getElementById('f-proc') ? document.getElementById('f-proc').value : '',
+    email: document.getElementById('f-email') ? document.getElementById('f-email').value.trim() : '',
+  };
+
+  // Datos de doctores (dinámicos)
+  var doctorBlocks = document.querySelectorAll('.doctor-block');
+  doctorBlocks.forEach(function(block, index) {
+    var i = index + 1;
+    var inputs = block.querySelectorAll('input');
+    inputs.forEach(function(input) {
+      data[input.name] = input.value;
+    });
+  });
+
+  // Datos del equipo quirúrgico (si es premium)
+  var teamNotes = document.getElementById('f-team-notes');
+  if (teamNotes) data.team_notes = teamNotes.value;
+
+  // Guardar como JSON
+  localStorage.setItem('medverify_form_data', JSON.stringify(data));
+}
+
+// Luego dentro del evento del submitBtn, antes de redirigir:
+collectFormData();
+    
+
+    
     // Redirigir a Stripe
     window.location.href = link;
   });
