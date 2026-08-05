@@ -161,18 +161,19 @@
       if (step2Container) step2Container.innerHTML = html;
     }
 
-    function updateStepVisibility() {
-      var isPremium = activePackage === 'premium';
-      if (step3Container) step3Container.style.display = isPremium ? '' : 'none';
-      if (step3Wrapper) step3Wrapper.style.display = isPremium ? '' : 'none';
-      if (stepLine3) stepLine3.style.display = isPremium ? '' : 'none';
-      if (stepLine4) stepLine4.style.display = isPremium ? '' : 'none';
-      totalSteps = isPremium ? 4 : 3;
-      stepDots.forEach(function (dot) {
-        var s = parseInt(dot.dataset.step);
-        dot.style.display = s > totalSteps ? 'none' : '';
-      });
-    }
+function updateStepVisibility() {
+  var isPremium = activePackage === 'premium';
+  if (step3Container) step3Container.style.display = isPremium ? '' : 'none';
+  if (step3Wrapper) step3Wrapper.style.display = isPremium ? '' : 'none';
+  if (stepLine3) stepLine3.style.display = isPremium ? '' : 'none';
+  // Ya no ocultamos stepLine4, siempre visible
+  totalSteps = 4; // Ahora todos los planes tienen 4 pasos
+  stepDots.forEach(function (dot) {
+    var s = parseInt(dot.dataset.step);
+    // No ocultamos ningún dot, todos visibles siempre
+    dot.style.display = '';
+  });
+}
 
     function goToStep(step) {
       currentStep = Math.min(Math.max(step, 1), totalSteps);
@@ -219,9 +220,14 @@
     if (prevBtn) prevBtn.addEventListener('click', function () {
       if (currentStep > 1) goToStep(currentStep - 1);
     });
-    if (nextBtn) nextBtn.addEventListener('click', function () {
-      if (currentStep < totalSteps) goToStep(currentStep + 1);
-    });
+if (nextBtn) nextBtn.addEventListener('click', function () {
+  var next = currentStep + 1;
+  // Si no es premium y estamos en el paso 2, saltar al paso 4 (Pay) directamente
+  if (activePackage !== 'premium' && currentStep === 2) {
+    next = 4;
+  }
+  if (next <= totalSteps) goToStep(next);
+});
 
     // Submit placeholder
 // Configura tus links reales de Stripe Payment Links
@@ -313,8 +319,8 @@ collectFormData();
         goToStep(1);
 
         // Opcional: scroll más suave (descomenta las dos líneas siguientes si lo prefieres)
-        // e.preventDefault();
-        // document.getElementById('start').scrollIntoView({ behavior: 'smooth' });
+         e.preventDefault();
+         document.getElementById('start').scrollIntoView({ behavior: 'smooth' });
       });
     });
   }
