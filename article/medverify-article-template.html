@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CONACEM Certification: How to Verify Your Surgeon's Board Status | MedVerify</title>
+<meta name="description" content="A plain-English guide to Mexico's three medical credentialing records — cédula profesional, cédula de especialidad, and CONACEM certification — and how to check whether each is current." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     This is the one place to swap in your real brand values.
+     Everything below derives from these variables.
+     ============================================================ */
+  :root{
+    --paper:      #F5F6F2;  /* page background — cool "registry paper" */
+    --paper-alt:  #EAE7DD;  /* alternating band background */
+    --ink:        #16232E;  /* primary text */
+    --ink-soft:   #55636D;  /* secondary / meta text */
+    --navy:       #0F3A56;  /* brand structural color — nav, headings, numerals */
+    --navy-deep:  #0A2A3F;
+    --stamp:      #AE3A2A;  /* CTA + "verified stamp" accent */
+    --stamp-deep: #8F2E21;
+    --amber:      #B8842E;  /* caution / red-flag accent (kept distinct from CTA red) */
+    --verified:   #1F7A57;  /* checkmarks / confirmed-good signal */
+    --line:       #D9D6C9;  /* hairline borders */
+    --radius:     6px;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+    --maxw: 1120px;
+    --maxw-prose: 720px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:var(--font-display); color:var(--navy); margin:0 0 .5em; line-height:1.15; }
+  p{ margin:0 0 1.1em; }
+  .container{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+  .prose{ max-width:var(--maxw-prose); margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--navy); color:#fff; padding:10px 16px; border-radius:0 0 6px 0; z-index:100;
+  }
+  .skip-link:focus{ left:0; top:0; }
+
+  :focus-visible{ outline:2px solid var(--stamp); outline-offset:3px; }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-body); font-weight:600; font-size:.95rem;
+    padding:13px 22px; border-radius:var(--radius);
+    text-decoration:none; border:1px solid transparent; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--stamp); color:#fff; }
+  .btn-primary:hover{ background:var(--stamp-deep); box-shadow:0 6px 16px rgba(174,58,42,.28); }
+  .btn-ghost{ background:transparent; color:var(--navy); border-color:var(--navy); }
+  .btn-ghost:hover{ background:var(--navy); color:#fff; }
+
+  /* ---------- nav ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(245,246,242,.9); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .container{ display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px; }
+  .brand{ display:flex; align-items:center; gap:8px; text-decoration:none; font-family:var(--font-display); font-weight:700; color:var(--navy); font-size:1.05rem; }
+  .brand svg{ flex:none; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:56px 0 40px; }
+  .hero .container{ display:grid; grid-template-columns:1.35fr .65fr; gap:40px; align-items:center; }
+  .kicker{
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--stamp); font-weight:600; margin-bottom:14px; display:block;
+  }
+  .hero h1{ font-size:clamp(1.9rem, 1.35rem + 2vw, 2.7rem); font-weight:600; letter-spacing:-.01em; }
+  .hero h1 em{ font-style:italic; color:var(--stamp-deep); }
+  .hero-dek{ color:var(--ink-soft); font-size:1.08rem; max-width:56ch; }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center;
+    font-family:var(--font-mono); font-size:.78rem; color:var(--ink-soft); margin-top:18px;
+  }
+  .hero-meta .dot{ opacity:.5; }
+  .hero-meta .check{ color:var(--verified); }
+
+  .stamp-wrap{ display:flex; justify-content:center; }
+  .stamp{ width:150px; height:150px; transform:rotate(-8deg); mix-blend-mode:multiply; opacity:.92; }
+  .stamp text{ font-family:var(--font-mono); fill:var(--stamp); }
+
+  /* ---------- stat row ---------- */
+  .stat-row{ background:var(--paper-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:34px 0; }
+  .stat-row .container{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:28px; }
+  .stat{ text-align:left; }
+  .stat-num{ display:block; font-family:var(--font-display); font-weight:700; font-size:2.3rem; color:var(--navy); line-height:1; margin-bottom:8px; }
+  .stat-label{ color:var(--ink-soft); font-size:.92rem; max-width:32ch; }
+
+  /* ---------- article prose ---------- */
+  .prose-section{ padding:44px 0 8px; }
+  .prose-section p{ font-size:1.03rem; }
+
+  .callout{
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--navy);
+    border-radius:var(--radius); padding:22px 26px; margin:28px 0;
+    font-family:var(--font-display); font-weight:500; font-size:1.12rem; color:var(--navy); line-height:1.45;
+  }
+
+  /* ---------- numbered pattern block ---------- */
+  .pattern-section{ padding:36px 0; }
+  .section-head{ max-width:var(--maxw-prose); margin:0 auto 26px; padding:0 clamp(20px,4vw,48px); }
+  .section-head h2{ font-size:1.6rem; }
+  .section-head p{ color:var(--ink-soft); margin:0; }
+  .pattern-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .pattern-item{ background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:24px; }
+  .pattern-num{ font-family:var(--font-mono); font-weight:600; color:var(--stamp); font-size:.85rem; letter-spacing:.05em; display:block; margin-bottom:10px; }
+  .pattern-item h3{ font-size:1.05rem; margin-bottom:8px; }
+  .pattern-item p{ color:var(--ink-soft); font-size:.95rem; margin:0; }
+
+  /* ---------- comparison table ---------- */
+  .compare-section{ padding:36px 0; background:var(--paper-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .table-scroll{ overflow-x:auto; }
+  table.compare{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; min-width:560px; }
+  table.compare th, table.compare td{ text-align:left; padding:14px 18px; font-size:.92rem; border-bottom:1px solid var(--line); }
+  table.compare th{ font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); background:var(--paper); }
+  table.compare tr:last-child td{ border-bottom:none; }
+  table.compare td:first-child{ font-weight:600; color:var(--navy); }
+
+  /* ---------- checklist card (echoes the product widget) ---------- */
+  .checklist-section{ padding:40px 0; }
+  .checklist-card{ max-width:var(--maxw-prose); margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 10px 30px rgba(15,58,86,.06); overflow:hidden; }
+  .checklist-head{ display:flex; align-items:center; gap:8px; padding:16px 22px; border-bottom:1px solid var(--line); background:var(--paper-alt); }
+  .live-dot{ width:8px; height:8px; border-radius:50%; background:var(--verified); }
+  .checklist-head span{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em; color:var(--ink-soft); }
+  .checklist-body{ padding:10px 22px 6px; }
+  .checklist-row{ display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px dashed var(--line); font-size:.95rem; }
+  .checklist-row:last-child{ border-bottom:none; }
+  .checklist-foot{ padding:14px 22px 20px; color:var(--ink-soft); font-size:.85rem; }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{ background:var(--navy); color:#fff; padding:44px 0; margin:8px 0; }
+  .cta-banner .container{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:22px; }
+  .cta-banner h2{ color:#fff; font-size:1.5rem; margin-bottom:6px; }
+  .cta-banner p{ color:#C9D6DE; margin:0; max-width:44ch; }
+
+  /* ---------- FAQ ---------- */
+  .faq-section{ padding:44px 0; }
+  .faq-item{ max-width:var(--maxw-prose); margin:0 auto 12px; border:1px solid var(--line); border-radius:var(--radius); background:#fff; }
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:18px 22px; font-family:var(--font-display); font-weight:600; font-size:1rem;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary .marker{ font-family:var(--font-mono); color:var(--stamp); font-size:1.2rem; flex:none; }
+  .faq-item[open] summary .marker{ transform:rotate(45deg); }
+  .faq-item summary .marker{ transition:transform .15s ease; display:inline-block; }
+  .faq-item .faq-a{ padding:0 22px 20px; color:var(--ink-soft); font-size:.96rem; }
+
+  /* ---------- sources ---------- */
+  .sources-section{ padding:12px 0 44px; }
+  .sources-list{ max-width:var(--maxw-prose); margin:0 auto; padding:0 clamp(20px,4vw,48px); list-style:none; }
+  .sources-list li{ font-family:var(--font-mono); font-size:.85rem; color:var(--ink-soft); padding:10px 0; border-bottom:1px solid var(--line); }
+  .sources-list li b{ color:var(--ink); font-family:var(--font-body); font-weight:600; }
+  .sources-note{ max-width:var(--maxw-prose); margin:14px auto 0; padding:0 clamp(20px,4vw,48px); color:var(--ink-soft); font-size:.88rem; }
+
+  /* ---------- series ---------- */
+  .series-section{ padding:36px 0 52px; background:var(--paper-alt); border-top:1px solid var(--line); }
+  .series-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+  .series-card{ background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
+  .series-tag{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--amber); }
+  .series-card h3{ font-size:1.02rem; margin:8px 0 6px; }
+  .series-card p{ color:var(--ink-soft); font-size:.9rem; margin:0; }
+
+  /* ---------- final CTA ---------- */
+  .final-cta{ padding:52px 0 60px; text-align:center; }
+  .final-cta .eyebrow{ font-family:var(--font-mono); font-size:.78rem; letter-spacing:.08em; color:var(--stamp); text-transform:uppercase; }
+  .final-cta h2{ font-size:1.7rem; max-width:32ch; margin:10px auto 22px; }
+
+  /* ---------- footer ---------- */
+  .site-footer{ border-top:1px solid var(--line); padding:44px 0 30px; }
+  .footer-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:28px; padding-bottom:28px; }
+  .footer-grid h4{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 12px; }
+  .footer-grid a{ display:block; text-decoration:none; color:var(--ink); font-size:.92rem; margin-bottom:8px; }
+  .footer-legal{ border-top:1px solid var(--line); padding-top:20px; color:var(--ink-soft); font-size:.8rem; }
+
+  @media (max-width:820px){
+    .hero .container{ grid-template-columns:1fr; }
+    .stamp-wrap{ order:-1; }
+    .stamp{ width:110px; height:110px; }
+    .cta-banner .container{ flex-direction:column; align-items:flex-start; text-align:left; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <div class="container">
+    <a class="brand" href="#top">
+      <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9.5" fill="none" stroke="#0F3A56" stroke-width="1.6"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0F3A56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      MedVerify
+    </a>
+    <a class="btn btn-primary" href="#start">Verify my doctor</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div>
+        <span class="kicker">Verification Guides · Credentials</span>
+        <h1>Your surgeon says the board certification is current. <em>Here's how to actually confirm that.</em></h1>
+        <p class="hero-dek">"Board certified" gets used like it's one credential. In Mexico's system it's actually three separate records, issued by three different institutions — and only one of them has an expiration date. Here's what each one means, and how to check all three before you book.</p>
+        <div class="hero-meta">
+          <span>9 min read</span><span class="dot">·</span>
+          <span class="check">✓</span><span>Checked against MedVerify's SEP, CONACEM &amp; COFEPRIS source list</span><span class="dot">·</span>
+          <span>Updated August 2026</span>
+        </div>
+      </div>
+      <div class="stamp-wrap" aria-hidden="true">
+        <svg class="stamp" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="74" fill="none" stroke="var(--stamp)" stroke-width="2.5"/>
+          <circle cx="80" cy="80" r="64" fill="none" stroke="var(--stamp)" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <text x="80" y="58" text-anchor="middle" font-size="10.5" letter-spacing="2" font-weight="600">VERIFICATION</text>
+          <text x="80" y="71" text-anchor="middle" font-size="10.5" letter-spacing="4" font-weight="600">GUIDE</text>
+          <text x="80" y="102" text-anchor="middle" font-size="30" font-weight="600">✓</text>
+          <text x="80" y="124" text-anchor="middle" font-size="9" letter-spacing="1">SEP · CONACEM</text>
+          <text x="80" y="136" text-anchor="middle" font-size="9" letter-spacing="2">COFEPRIS</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section class="stat-row">
+    <div class="container">
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">credentials hide behind the phrase "board certified"</span></div>
+      <div class="stat"><span class="stat-num">5 yrs</span><span class="stat-label">how often a CONACEM certification must be renewed to stay current</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">of the 3 source registries publish an English-language version</span></div>
+    </div>
+  </section>
+
+  <article class="prose-section prose">
+    <p>Ask a clinic if the surgeon is board certified, and you'll almost always hear yes. It's rarely a lie. It's just rarely the whole answer. In the U.S., that phrase points to one credential, checked in one database. In Mexico, it points to three — issued by three separate federal systems, cross-checked by none of them automatically.</p>
+    <p>None of that makes a doctor unsafe on its own. It means the phrase doesn't tell you what you think it tells you — and the gap matters most for exactly the specialties patients travel abroad for.</p>
+    <div class="callout">A current specialty license and a current CONACEM certification are not the same record. A doctor can hold one without the other, and nothing on a clinic's website is required to say so.</div>
+  </article>
+
+  <section class="pattern-section">
+    <div class="section-head">
+      <h2>Three credentials, three different questions</h2>
+      <p>Each one answers something different. None of them, alone, answers all of it.</p>
+    </div>
+    <div class="container">
+      <div class="pattern-grid">
+        <div class="pattern-item">
+          <span class="pattern-num">01</span>
+          <h3>Cédula profesional</h3>
+          <p>Did they finish medical school and get authorized to practice medicine at all? Every licensed doctor in Mexico has one — it's the baseline, not the specialty.</p>
+        </div>
+        <div class="pattern-item">
+          <span class="pattern-num">02</span>
+          <h3>Cédula de especialidad</h3>
+          <p>Did they complete a recognized residency in the specialty they're offering you? This confirms the training happened — once.</p>
+        </div>
+        <div class="pattern-item">
+          <span class="pattern-num">03</span>
+          <h3>CONACEM certification</h3>
+          <p>Is that specialty training still considered current, as of today? This is the one credential with an expiration date — and the one most often left unchecked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="compare-section">
+    <div class="section-head">
+      <h2>What each credential does — and doesn't — tell you</h2>
+    </div>
+    <div class="container">
+      <div class="table-scroll">
+        <table class="compare">
+          <thead>
+            <tr><th>Credential</th><th>Confirms</th><th>Expires?</th><th>Recorded in</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cédula profesional</td><td>Completed medical degree, authorized to practice</td><td>No</td><td>SEP federal registry</td></tr>
+            <tr><td>Cédula de especialidad</td><td>Completed a recognized specialty residency</td><td>No</td><td>SEP registry, specialty system</td></tr>
+            <tr><td>CONACEM certification</td><td>Specialty training is still considered current</td><td>Yes — typically every 5 years</td><td>CONACEM registry, by specialty code</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="checklist-section">
+    <div class="section-head">
+      <h2>What we check in a certification review</h2>
+    </div>
+    <div class="checklist-card">
+      <div class="checklist-head"><span class="live-dot"></span><span>VERIFYING</span></div>
+      <div class="checklist-body">
+        <div class="checklist-row"><span class="check" style="color:var(--verified)">✓</span><span>Professional license confirmed against the SEP federal registry</span></div>
+        <div class="checklist-row"><span class="check" style="color:var(--verified)">✓</span><span>Specialty license confirmed, or reported not found</span></div>
+        <div class="checklist-row"><span class="check" style="color:var(--verified)">✓</span><span>CONACEM certification status: current, expired, or never issued</span></div>
+        <div class="checklist-row"><span class="check" style="color:var(--verified)">✓</span><span>Photo match against the CONACEM physician registry</span></div>
+        <div class="checklist-row"><span class="check" style="color:var(--verified)">✓</span><span>Homonym check across all three registries</span></div>
+      </div>
+      <div class="checklist-foot">Every finding is cited with its source — you can check it yourself.</div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <div>
+        <h2>Already have a name?</h2>
+        <p>We check all three registries and tell you exactly where things stand — cited, in plain English, in 24–48 hours.</p>
+      </div>
+      <a class="btn btn-primary" href="#start">Start my verification →</a>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="section-head"><h2>Frequently asked questions</h2></div>
+
+    <details class="faq-item">
+      <summary>Can a doctor be legally licensed but not actually board-certified in the specialty they're practicing?<span class="marker">+</span></summary>
+      <div class="faq-a">Yes. A cédula de especialidad confirms the residency happened. It doesn't confirm the CONACEM certification tied to it is still current — the two are checked in different systems, so it's possible to have one without the other.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Does an expired CONACEM certification mean the doctor is unsafe?<span class="marker">+</span></summary>
+      <div class="faq-a">Not by itself. Some doctors let a renewal lapse for administrative reasons and remain highly competent. What it does mean is that the specific claim "board certified" hasn't been independently reviewed recently — worth knowing before surgery, not after.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I check this myself before booking?<span class="marker">+</span></summary>
+      <div class="faq-a">You can. Both registries are public. The friction is that they're Spanish-only, organized by internal specialty codes rather than names, and don't cross-reference each other. That gap is what a review like this closes.</div>
+    </details>
+  </section>
+
+  <section class="sources-section">
+    <div class="section-head"><h2>Sources referenced in this guide</h2></div>
+    <ul class="sources-list">
+      <li><b>Secretaría de Educación Pública (SEP)</b> — federal professional licensing registry</li>
+      <li><b>Consejo Nacional de Certificación de Especialidades Médicas (CONACEM)</b> — specialty board certification</li>
+      <li><b>Comisión Federal para la Protección contra Riesgos Sanitarios (COFEPRIS)</b> — health regulatory authority</li>
+    </ul>
+    <p class="sources-note">MedVerify checks each finding directly against these sources and cites where it was found.</p>
+  </section>
+
+  <section class="series-section">
+    <div class="section-head"><h2>More in this series</h2></div>
+    <div class="container">
+      <div class="series-grid">
+        <div class="series-card">
+          <span class="series-tag">Next</span>
+          <h3>The Doctor Who Isn't the Doctor</h3>
+          <p>Why two surgeons can share a name — and a review score.</p>
+        </div>
+        <div class="series-card">
+          <span class="series-tag">Coming soon</span>
+          <h3>When a Sanctioned Clinic Reopens</h3>
+          <p>How a COFEPRIS closure can disappear behind a new name.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" id="start">
+    <div class="prose">
+      <span class="eyebrow">From $89 — full verification</span>
+      <h2>Doctor, clinic, and emergency protocol — one PDF report.</h2>
+      <a class="btn btn-primary" href="#start">View packages &amp; start →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:10px;">
+          <svg width="20" height="20" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9.5" fill="none" stroke="#0F3A56" stroke-width="1.6"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0F3A56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          MedVerify
+        </a>
+        <p style="color:var(--ink-soft); font-size:.88rem; max-width:32ch;">Independent medical verification for patients considering care in Mexico.</p>
+      </div>
+      <div>
+        <h4>What we verify</h4>
+        <a href="#start">Doctor credentials</a>
+        <a href="#start">Clinic status</a>
+        <a href="#start">Emergency protocol</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+    <div class="footer-legal">© 2026 MedVerify. We are an independent verification service. We are not a medical provider, insurer, or referral service. We do not recommend doctors or clinics.</div>
+  </div>
+</footer>
+
+</body>
+</html>
