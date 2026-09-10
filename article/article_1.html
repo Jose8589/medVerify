@@ -19,13 +19,7 @@
   <link rel="stylesheet" href="../assets/styles.css">
 
   <style>
-    /* ============================================================
-   ADICIONES — Clases usadas en las páginas de artículo/guía
-   que no existían en el styles.css general.
-   Pegar antes de la sección "Responsive" al final del archivo.
-   ============================================================ */
 
-/* ---------- Prose (cuerpo del artículo) ---------- */
 .prose { max-width: 760px; margin: 0 auto; }
 .prose h2 { font-size: 30px; line-height: 1.25; margin: 56px 0 20px; }
 .prose h2:first-child { margin-top: 0; }
@@ -33,7 +27,6 @@
 .prose ul, .prose ol { font-size: 17px; line-height: 1.75; color: var(--color-text-secondary); }
 .prose b { color: var(--color-text-primary); }
 
-/* ---------- Masthead del artículo ---------- */
 .article-header {
   background: var(--color-bg-dark);
   color: var(--color-text-light);
@@ -75,7 +68,6 @@
   flex-shrink: 0;
 }
 
-/* ---------- Tabla de contenidos ---------- */
 .article-toc {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -93,7 +85,6 @@
 .article-toc a { text-decoration: none; color: var(--color-text-primary); transition: color .15s; }
 .article-toc a:hover { color: var(--color-accent); }
 
-/* ---------- Callout / cita destacada ---------- */
 .callout {
   background: rgba(193,125,17,.07);
   border-left: 3px solid var(--color-accent);
@@ -104,7 +95,6 @@
   margin: 28px 0;
 }
 
-/* ---------- Franja de estadísticas dentro del artículo ---------- */
 .article-stat-strip {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   margin: 36px 0; padding: 28px 0;
@@ -115,7 +105,6 @@
 .stat-num { font-family: "Playfair Display", serif; font-size: 38px; color: var(--color-accent); line-height: 1; margin-bottom: 8px; }
 .stat-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.4; }
 
-/* ---------- Checklist card (fondo oscuro) ---------- */
 .checklist-card {
   background: var(--color-bg-dark);
   color: var(--color-text-light);
@@ -150,7 +139,6 @@
   border-top: 1px solid rgba(244,241,236,.1);
 }
 
-/* ---------- CTA box embebido en el artículo ---------- */
 .article-cta-box {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -161,7 +149,6 @@
 .article-cta-box h3 { font-size: 22px; margin-bottom: 10px; }
 .article-cta-box p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: 18px; }
 
-/* ---------- Lista de fuentes ---------- */
 .sources-list { list-style: none; padding: 0; margin: 20px 0; }
 .sources-list li {
   font-size: 15.5px; padding: 10px 0;
@@ -172,13 +159,11 @@
 .sources-list b { color: var(--color-text-primary); }
 .sources-note { font-size: 14px; color: var(--color-text-secondary); font-style: italic; }
 
-/* ---------- Etiqueta de serie (tarjetas "Keep Reading") ---------- */
 .series-tag {
   font-weight: 700; font-size: 12px; letter-spacing: .1em;
   color: var(--color-accent); text-transform: uppercase;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .article-stat-strip { grid-template-columns: 1fr; gap: 20px; }
 }
