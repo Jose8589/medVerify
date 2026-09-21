@@ -3,23 +3,24 @@
 
   <url>
     <loc>https://medverify.ink/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-20</lastmod>
   </url>
 
   <url>
     <loc>https://medverify.ink/article/how-to-verify-mexican-doctors-credentials.html</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-20</lastmod>
   </url>
 
   <url>
     <loc>https://medverify.ink/article/medical-tourism-mexico-safety-guide.html</loc>
-    <lastmod>2026-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-20</lastmod>
   </url>
+
+  <!-- If you create /article/index.html (the "Guides" page), add it here:
+  <url>
+    <loc>https://medverify.ink/article/</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  -->
 
 </urlset>
