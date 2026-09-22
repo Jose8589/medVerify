@@ -5,35 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MedVerify — Verify Your Doctor in Mexico Before Surgery</title>
-  <meta name="description" content="Independent verification of Mexican doctors and clinics for Americans and Canadians considering medical procedures abroad. Credentials, sanctions, clinic history, and emergency protocol. Report in 72 hours.">
-  <meta name="robots" content="index, follow">
+  <!-- FIX: said "Report in 72 hours"; the whole site says 24-48 hours -->
+  <meta name="description" content="Independent verification of Mexican doctors and clinics for Americans and Canadians considering medical procedures abroad. Credentials, sanctions, clinic history, and emergency protocol. Report in 24-48 hours.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://medverify.ink/">
 
   <meta property="og:title" content="MedVerify — Verify Your Doctor in Mexico Before Surgery">
   <meta property="og:description" content="Before you book the flight, know who you're trusting. We verify credentials, sanctions, and what happens if something goes wrong.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:url" content="https://medverify.ink/">
+  <meta property="og:site_name" content="MedVerify">
+  <!-- FIX: og:image must be an absolute URL -->
+  <meta property="og:image" content="https://medverify.ink/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css">
 
+  <style>
+    .card a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  </style>
 
+  <!-- Structured data: business + the three packages with their real prices -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ProfessionalService","name":"MedVerify","description":"Independent medical verification service for patients considering surgery in Mexico","areaServed":["US","CA"],"serviceType":"Medical credential verification","hasOfferCatalog":{"@type":"OfferCatalog","name":"Verification Report","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Full Medical Verification Report","description":"Doctor credentials, clinic status, and emergency protocol"}}]}}
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"MedVerify","url":"https://medverify.ink/","logo":"https://medverify.ink/assets/logo.png","image":"https://medverify.ink/og-image.jpg","description":"Independent medical verification service for patients considering surgery in Mexico","areaServed":["US","CA"],"serviceType":"Medical credential verification","priceRange":"$89-$199","hasOfferCatalog":{"@type":"OfferCatalog","name":"Verification Reports","itemListElement":[
+    {"@type":"Offer","name":"Essential","price":"89","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Essential Verification Report","description":"1 doctor, 1 clinic, 1 city: doctor credentials, clinic status, and emergency protocol"}},
+    {"@type":"Offer","name":"Compare","price":"139","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Compare Verification Report","description":"2 doctors, 2 clinics, 2 cities with side-by-side comparison"}},
+    {"@type":"Offer","name":"Premium","price":"199","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"Premium Verification Report","description":"3 doctors, 3 clinics, 3 cities with ranked comparison, results call and surgical team verification"}}
+  ]}}
   </script>
-<script type="application/ld+json">
+
+  <!-- Structured data: FAQPage — FIX: text now matches the visible FAQ word for word -->
+  <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"How do I know if a doctor in Mexico is really board certified?","acceptedAnswer":{"@type":"Answer","text":"In Mexico, board certification is issued by CONACEM and it expires — typically every five years. A doctor can have a valid SEP specialty license and an expired CONACEM certification. We verify both directly in each registry."}},
-    {"@type":"Question","name":"What does COFEPRIS do and what happens if a doctor or clinic has a sanction?","acceptedAnswer":{"@type":"Answer","text":"COFEPRIS is Mexico's federal health regulator. They issue alerts, sanctions, and clinic closures. We report what type of alert exists, when it was issued, and what it referred to."}},
-    {"@type":"Question","name":"What is the difference between a cédula profesional and a cédula de especialidad?","acceptedAnswer":{"@type":"Answer","text":"A cédula profesional confirms a medical degree. A cédula de especialidad confirms a recognized specialty residency. A doctor can have the first without the second. We verify both independently."}},
-    {"@type":"Question","name":"What happens if I have a complication during surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends on the clinic's distance from a hospital with an ICU. Your report includes the nearest hospital, estimated transfer time, and the nearest U.S. or Canadian consulate."}},
-    {"@type":"Question","name":"Is it safe to get surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on the specific doctor and clinic — which is why verification exists. The country is not the variable. The specific provider is."}},
-    {"@type":"Question","name":"How do I verify a Mexican doctor if I don't speak Spanish?","acceptedAnswer":{"@type":"Answer","text":"The registries are all in Spanish. We navigate them, interpret what we find, and deliver the report in plain English."}},
-    {"@type":"Question","name":"Can a doctor buy or fake credentials in Mexico?","acceptedAnswer":{"@type":"Answer","text":"SEP licenses have a unique number verifiable in the federal registry. But someone can present a real credential belonging to a similarly named person, or omit an expired specialty certification. Our homonym check catches these discrepancies."}},
-    {"@type":"Question","name":"How long does it take to receive the report?","acceptedAnswer":{"@type":"Answer","text":"24-48 hours from confirmed payment. Premium includes priority 24h delivery if you need it faster."}},
-    {"@type":"Question","name":"What if you find something serious?","acceptedAnswer":{"@type":"Answer","text":"We report what we find and explain what it means. We do not make the decision for you — but you will have the information to make it yourself."}}
+    {"@type":"Question","name":"How do I know if a doctor in Mexico is really board certified?","acceptedAnswer":{"@type":"Answer","text":"In Mexico, board certification is granted by the specialty medical councils recognized by CONACEM (Comité Normativo Nacional de Consejos de Especialidades Médicas). It expires — typically every five years — and must be renewed. A doctor can have a valid SEP specialty license and still have an expired certification, meaning their specialty credentials haven't been reviewed in years. We verify both directly in each registry."}},
+    {"@type":"Question","name":"What does COFEPRIS do, and what happens if there's a sanction?","acceptedAnswer":{"@type":"Answer","text":"COFEPRIS is Mexico's federal health regulatory authority — roughly the FDA's enforcement role. They issue alerts, sanctions, and can order clinic closures. We report what type of alert exists, when it was issued, and what it referred to — so you can judge the severity yourself."}},
+    {"@type":"Question","name":"What's the difference between a cédula profesional and a cédula de especialidad?","acceptedAnswer":{"@type":"Answer","text":"A cédula profesional confirms a completed medical degree and authorization to practice. A cédula de especialidad confirms a recognized specialty residency. A doctor can have the first without the second — a licensed physician, but not a credentialed specialist in your procedure. We verify both independently."}},
+    {"@type":"Question","name":"What happens if I have a complication during surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"It depends almost entirely on how far your clinic is from a hospital with an ICU — sometimes 5 minutes, sometimes 40. Your report includes the specific nearest hospital, the estimated transfer time, and the nearest U.S. or Canadian consulate, which can provide a list of local physicians, help with emergency communication, and assist with repatriation."}},
+    {"@type":"Question","name":"Is it safe to get surgery in Mexico?","acceptedAnswer":{"@type":"Answer","text":"That depends entirely on the specific doctor and clinic — which is exactly why verification exists. Mexico has JCI-accredited hospitals and surgeons trained at leading U.S. institutions. It also has unlicensed practitioners and clinics without current permits. The country isn't the variable. The specific provider is."}},
+    {"@type":"Question","name":"How do I verify a Mexican doctor if I don't speak Spanish?","acceptedAnswer":{"@type":"Answer","text":"The registries are in Spanish — the SEP registry, the specialty boards and the COFEPRIS alert system have no English version. That's the core reason this service exists. We navigate those systems, interpret what we find, and deliver the report in plain English."}},
+    {"@type":"Question","name":"Can a doctor buy or fake credentials in Mexico?","acceptedAnswer":{"@type":"Answer","text":"SEP licenses carry a unique registration number verifiable in the federal registry, so a made-up license number won't check out — but someone can present a real credential belonging to a similarly named person, or present a legitimate one while omitting that their specialty certification has expired. Our homonym check and cross-verification are designed to catch exactly that."}},
+    {"@type":"Question","name":"How long does it take to receive the report?","acceptedAnswer":{"@type":"Answer","text":"24-48 hours from confirmed payment. Submit Friday evening, expect it by Sunday. Premium includes priority 24h delivery if you need it faster."}},
+    {"@type":"Question","name":"What if you find something serious?","acceptedAnswer":{"@type":"Answer","text":"We report what we find. If it's significant — an active sanction, an expired certification, a closure, a pattern of serious complaints — the report explains clearly what it means. We don't make the decision for you, but you'll have the information to make it yourself."}}
   ]}
   </script>
 </head>
@@ -53,8 +68,8 @@
         <h1>You found a surgeon in Mexico. <em>Now find out who they really are.</em></h1>
         <p class="hero__sub">A human investigator verifies the doctor's license, the clinic's record, and what happens if something goes wrong — then sends you a plain-English report in 24-48 hours.</p>
         <div class="hero__cta">
-          <a href="#pricing" class="btn btn--primary">View Packages & Start <span class="arrow">→</span></a>
-          <div class="hero__price"><b>From $89</b><span>Essential, Compare & Premium packages</span></div>
+          <a href="#pricing" class="btn btn--primary">View Packages &amp; Start <span class="arrow">→</span></a>
+          <div class="hero__price"><b>From $89</b><span>Essential, Compare &amp; Premium packages</span></div>
         </div>
         <div class="hero__meta">
           <span><span class="tick">✓</span> Delivered in 24h - 48h</span>
@@ -111,12 +126,12 @@
           <ul>
             <li>Professional license lives in the SEP registry</li>
             <li>Specialty license — a different part of the same system</li>
-            <li>Certification validity in CONACEM — only by exact specialty code</li>
-            <li>Sanctions in COFEPRIS — not indexed by Google at all</li>
+            <li>Certification validity is held by the specialty boards — searched by exact specialty</li>
+            <li>Sanctions in COFEPRIS — hard to find through Google</li>
           </ul>
         </div>
       </div>
-      <p class="compare__note reveal">It's not that you didn't search well enough. <b>It's that this information was built for regulators, not for patients</b> — and reading it correctly takes knowing exactly where, and how, to look.</p>
+      <p class="compare__note reveal">It's not that you didn't search well enough. <b>It's that this information was built for regulators, not for patients</b> — and reading it correctly takes knowing exactly where, and how, to look. Want to try it yourself first? Our free guide shows <a href="/article/how-to-verify-mexican-doctors-credentials.html">how to check a Mexican doctor's credentials</a> step by step.</p>
     </div>
   </section>
 
@@ -180,7 +195,8 @@
           <div class="panel__item"><span class="dot">—</span>Prior names and any associated sanctions</div>
           <div class="panel__item"><span class="dot">—</span>COFEPRIS inspections, sanctions, and closures</div>
           <div class="panel__item"><span class="dot">—</span>JCI accreditation: verified against international directory</div>
-          <div class="panel__item"><span class="dot">—</span>Accreditation Canada / CCHSA: verified</div>
+          <!-- FIX: "CCHSA" is the old name; the body is now called Accreditation Canada -->
+          <div class="panel__item"><span class="dot">—</span>Accreditation Canada: verified</div>
           <div class="panel__item"><span class="dot">—</span>Domain and website age</div>
           <div class="panel__item"><span class="dot">—</span>Local media mentions and news coverage</div>
           <div class="panel__item"><span class="dot">—</span>Reddit and Facebook community mentions</div>
@@ -206,23 +222,23 @@
   <!-- SAMPLE REPORT -->
   <section class="section">
     <div class="container sample">
- <figure class="reveal" style="margin:0">
-  <a href="assets/reporte-premium-v4.pdf" target="_blank" rel="noopener" aria-label="Open sample report PDF">
-    <img class="sample__img" 
-         src="assets/reporte-premium-v4-1.png" 
-         alt="First page of a sample MedVerify report – redacted" 
-         width="640" 
-         height="828" 
-         loading="lazy"
-         style="background:#fff; width:100%; height:auto; cursor:pointer;">
-  </a>
-  <figcaption class="sample__caption" style="margin-top:12px;">
-    Sample report — all identifying information redacted<br>
-    <a href="assets/reporte-premium-v4.pdf" target="_blank" class="btn btn--ghost-light" style="display:inline-flex; margin-top:8px; font-size:14px; padding:8px 16px;">
-      📄 View full sample PDF <span class="arrow">→</span>
-    </a>
-  </figcaption>
-</figure>
+      <figure class="reveal" style="margin:0">
+        <a href="/assets/reporte-premium-v4.pdf" target="_blank" rel="noopener" aria-label="Open sample report PDF">
+          <img class="sample__img"
+               src="/assets/reporte-premium-v4-1.png"
+               alt="First page of a sample MedVerify report – redacted"
+               width="640"
+               height="828"
+               loading="lazy"
+               style="background:#fff; width:100%; height:auto; cursor:pointer;">
+        </a>
+        <figcaption class="sample__caption" style="margin-top:12px;">
+          Sample report — all identifying information redacted<br>
+          <a href="/assets/reporte-premium-v4.pdf" target="_blank" rel="noopener" class="btn btn--ghost-light" style="display:inline-flex; margin-top:8px; font-size:14px; padding:8px 16px;">
+            📄 View full sample PDF <span class="arrow">→</span>
+          </a>
+        </figcaption>
+      </figure>
       <div class="reveal" data-delay="1">
         <p class="label">What you receive</p>
         <h2 class="section-title">A document you can read, share with your family, and act on.</h2>
@@ -252,15 +268,36 @@
       <p class="label reveal">Frequently asked questions</p>
       <h2 class="section-title reveal">If you searched for this, you're in the right place.</h2>
       <div class="faq reveal" id="faq">
-        <div class="faq__item"><button class="faq__q" aria-expanded="false">How do I know if a doctor in Mexico is really board certified?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">In Mexico, board certification is issued by CONACEM (Consejo Nacional de Certificación de Especialidades Médicas). Unlike in the U.S., it expires — typically every five years — and must be renewed. A doctor can have a valid SEP specialty license and still have an expired CONACEM certification, meaning their specialty credentials haven't been reviewed in years. We verify both directly in each registry.</p></div></div>
+        <div class="faq__item"><button class="faq__q" aria-expanded="false">How do I know if a doctor in Mexico is really board certified?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">In Mexico, board certification is granted by the specialty medical councils recognized by CONACEM (Comité Normativo Nacional de Consejos de Especialidades Médicas). It expires — typically every five years — and must be renewed. A doctor can have a valid SEP specialty license and still have an expired certification, meaning their specialty credentials haven't been reviewed in years. We verify both directly in each registry.</p></div></div>
         <div class="faq__item"><button class="faq__q" aria-expanded="false">What does COFEPRIS do, and what happens if there's a sanction?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">COFEPRIS is Mexico's federal health regulatory authority — roughly the FDA's enforcement role. They issue alerts, sanctions, and can order clinic closures. We report what type of alert exists, when it was issued, and what it referred to — so you can judge the severity yourself.</p></div></div>
         <div class="faq__item"><button class="faq__q" aria-expanded="false">What's the difference between a cédula profesional and a cédula de especialidad?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">A cédula profesional confirms a completed medical degree and authorization to practice. A cédula de especialidad confirms a recognized specialty residency. A doctor can have the first without the second — a licensed physician, but not a credentialed specialist in your procedure. We verify both independently.</p></div></div>
         <div class="faq__item"><button class="faq__q" aria-expanded="false">What happens if I have a complication during surgery in Mexico?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">It depends almost entirely on how far your clinic is from a hospital with an ICU — sometimes 5 minutes, sometimes 40. Your report includes the specific nearest hospital, the estimated transfer time, and the nearest U.S. or Canadian consulate, which can provide a list of local physicians, help with emergency communication, and assist with repatriation.</p></div></div>
         <div class="faq__item"><button class="faq__q" aria-expanded="false">Is it safe to get surgery in Mexico?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">That depends entirely on the specific doctor and clinic — which is exactly why verification exists. Mexico has JCI-accredited hospitals and surgeons trained at leading U.S. institutions. It also has unlicensed practitioners and clinics without current permits. The country isn't the variable. The specific provider is.</p></div></div>
-        <div class="faq__item"><button class="faq__q" aria-expanded="false">How do I verify a Mexican doctor if I don't speak Spanish?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">All the registries are in Spanish — CONACEM, the SEP registry, and the COFEPRIS alert system have no English version. That's the core reason this service exists. We navigate those systems, interpret what we find, and deliver the report in plain English.</p></div></div>
-        <div class="faq__item"><button class="faq__q" aria-expanded="false">Can a doctor buy or fake credentials in Mexico?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">SEP licenses carry a unique registration number verifiable in the federal registry, so the credential itself can't be faked — but someone can present a real credential belonging to a similarly named person, or present a legitimate one while omitting that their specialty certification has expired. Our homonym check and cross-verification are designed to catch exactly that.</p></div></div>
+        <div class="faq__item"><button class="faq__q" aria-expanded="false">How do I verify a Mexican doctor if I don't speak Spanish?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">The registries are in Spanish — the SEP registry, the specialty boards and the COFEPRIS alert system have no English version. That's the core reason this service exists. We navigate those systems, interpret what we find, and deliver the report in plain English.</p></div></div>
+        <div class="faq__item"><button class="faq__q" aria-expanded="false">Can a doctor buy or fake credentials in Mexico?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">SEP licenses carry a unique registration number verifiable in the federal registry, so a made-up license number won't check out — but someone can present a real credential belonging to a similarly named person, or present a legitimate one while omitting that their specialty certification has expired. Our homonym check and cross-verification are designed to catch exactly that.</p></div></div>
         <div class="faq__item"><button class="faq__q" aria-expanded="false">How long does it take to receive the report?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">24-48 hours from confirmed payment. Submit Friday evening, expect it by Sunday. Premium includes priority 24h delivery if you need it faster.</p></div></div>
         <div class="faq__item"><button class="faq__q" aria-expanded="false">What if you find something serious?<span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__a"><p class="faq__a-inner">We report what we find. If it's significant — an active sanction, an expired certification, a closure, a pattern of serious complaints — the report explains clearly what it means. We don't make the decision for you, but you'll have the information to make it yourself.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: GUIDES (target of the "Guides" breadcrumb on both articles; gives Google a crawlable path to them) -->
+  <section class="section section--surface" id="guides">
+    <div class="container">
+      <p class="label reveal">Free guides</p>
+      <h2 class="section-title reveal">Do your own homework first.</h2>
+      <p class="lede reveal">Two free guides written by our team on how to protect yourself before surgery in Mexico.</p>
+      <div class="cards">
+        <article class="card reveal">
+          <span class="card__n">01</span>
+          <h3><a href="/article/how-to-verify-mexican-doctors-credentials.html">How to verify a doctor's credentials in Mexico</a></h3>
+          <p>A step-by-step walkthrough of the SEP, CONACEM, COFEPRIS and accreditation records, and the red flags to watch for.</p>
+        </article>
+        <article class="card reveal" data-delay="1">
+          <span class="card__n">02</span>
+          <h3><a href="/article/medical-tourism-mexico-safety-guide.html">Medical tourism in Mexico: a safety guide for US patients</a></h3>
+          <p>A four-part safety framework, the questions to ask a clinic before you book, and what the 2023 Matamoros outbreak taught patients.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -268,107 +305,107 @@
   <!-- VERIFICATION PACKAGES & PRICING -->
   <section class="section" id="pricing">
     <div class="container" style="max-width:1200px">
-      <p class="label reveal">Verification Packages — Pricing & Scope</p>
+      <p class="label reveal">Verification Packages — Pricing &amp; Scope</p>
       <h2 class="section-title reveal">For US and Canadian patients traveling to Mexico for medical procedures.</h2>
       <p class="lede reveal">Every report in English. Official Mexican government records.</p>
 
-<div class="pricing-grid reveal" data-delay="1">
-  <!-- ========== ESSENTIAL ========== -->
-  <article class="pkg-card">
-    <div class="pkg-card__header">
-      <h3 class="pkg-card__name">ESSENTIAL</h3>
-      <div class="pkg-card__price"><b>$89</b><span>/ report</span></div>
-      <div class="pkg-card__scope">1 doctor · 1 clinic · 1 city</div>
-      <p class="pkg-card__quote">"Verify the one doctor I've already chosen."</p>
-    </div>
-    
-    <div class="pkg-card__section">
-      <div class="pkg-card__section-title">What's verified</div>
-      <ul class="pkg-card__list">
-        <li class="check">SEP license, specialty &amp; CONACEM board status</li>
-        <li class="check">COFEPRIS sanctions &amp; national blacklists</li>
-        <li class="check">Legal complaints, homonym check &amp; photo match</li>
-        <li class="check">Clinic history, JCI accreditation &amp; domain age</li>
-        <li class="check">Nearest ICU hospital, transfer time &amp; consulate</li>
-        <li class="check">US/Canada travel advisory &amp; social reviews</li>
-      </ul>
-    </div>
+      <div class="pricing-grid reveal" data-delay="1">
+        <!-- ========== ESSENTIAL ========== -->
+        <article class="pkg-card">
+          <div class="pkg-card__header">
+            <h3 class="pkg-card__name">ESSENTIAL</h3>
+            <div class="pkg-card__price"><b>$89</b><span>/ report</span></div>
+            <div class="pkg-card__scope">1 doctor · 1 clinic · 1 city</div>
+            <p class="pkg-card__quote">"Verify the one doctor I've already chosen."</p>
+          </div>
 
-    <div class="pkg-card__section">
-      <div class="pkg-card__section-title">Delivery</div>
-      <ul class="pkg-card__list">
-        <li class="check">PDF report in English · 24-48h</li>
-        <li class="cross">Surgical team verification</li>
-        <li class="cross">Comparative report</li>
-        <li class="cross">Results call</li>
-      </ul>
-    </div>
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">What's verified</div>
+            <ul class="pkg-card__list">
+              <li class="check">SEP license, specialty &amp; CONACEM board status</li>
+              <li class="check">COFEPRIS sanctions &amp; national blacklists</li>
+              <li class="check">Legal complaints, homonym check &amp; photo match</li>
+              <li class="check">Clinic history, JCI accreditation &amp; domain age</li>
+              <li class="check">Nearest ICU hospital, transfer time &amp; consulate</li>
+              <li class="check">US/Canada travel advisory &amp; social reviews</li>
+            </ul>
+          </div>
 
-    <div class="pkg-card__foot">
-      <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="essential">Get Essential — $89 <span class="arrow">→</span></a>
-    </div>
-  </article>
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">Delivery</div>
+            <ul class="pkg-card__list">
+              <li class="check">PDF report in English · 24-48h</li>
+              <li class="cross">Surgical team verification</li>
+              <li class="cross">Comparative report</li>
+              <li class="cross">Results call</li>
+            </ul>
+          </div>
 
-  <!-- ========== COMPARE ========== -->
-  <article class="pkg-card pkg-card--featured">
-    <div class="pkg-card__badge">★ MOST POPULAR</div>
-    <div class="pkg-card__header">
-      <h3 class="pkg-card__name">COMPARE</h3>
-      <div class="pkg-card__price"><b>$139</b><span>/ report</span></div>
-      <div class="pkg-card__scope">2 doctors · 2 clinics · 2 cities</div>
-      <p class="pkg-card__quote">"I'm deciding between two—show me which is safer."</p>
-    </div>
+          <div class="pkg-card__foot">
+            <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="essential">Get Essential — $89 <span class="arrow">→</span></a>
+          </div>
+        </article>
 
-    <div class="pkg-card__section">
-      <div class="pkg-card__section-title">What makes it different</div>
-      <ul class="pkg-card__list">
-        <li class="check">Complete Essential-level verification for <strong>both</strong> doctors</li>
-        <li class="check"><span class="tag-new">NEW</span> Side‑by‑side scoring table &amp; safety comparison</li>
-        <li class="check"><span class="tag-new">NEW</span> Data‑backed recommendation: which surgeon is objectively safer</li>
-        <li class="check">Full emergency &amp; ICU comparison for both cities</li>
-      </ul>
-    </div>
+        <!-- ========== COMPARE ========== -->
+        <article class="pkg-card pkg-card--featured">
+          <div class="pkg-card__badge">★ MOST POPULAR</div>
+          <div class="pkg-card__header">
+            <h3 class="pkg-card__name">COMPARE</h3>
+            <div class="pkg-card__price"><b>$139</b><span>/ report</span></div>
+            <div class="pkg-card__scope">2 doctors · 2 clinics · 2 cities</div>
+            <p class="pkg-card__quote">"I'm deciding between two—show me which is safer."</p>
+          </div>
 
-    <div class="pkg-card__section">
-      <div class="pkg-card__section-title">Delivery &amp; scope</div>
-      <ul class="pkg-card__list">
-        <li class="check">Combined PDF report · 24-48h</li>
-        <li class="cross">Surgical team verification</li>
-        <li class="cross">Results call</li>
-      </ul>
-    </div>
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">What makes it different</div>
+            <ul class="pkg-card__list">
+              <li class="check">Complete Essential-level verification for <strong>both</strong> doctors</li>
+              <li class="check"><span class="tag-new">NEW</span> Side‑by‑side scoring table &amp; safety comparison</li>
+              <li class="check"><span class="tag-new">NEW</span> Data‑backed recommendation: which surgeon is objectively safer</li>
+              <li class="check">Full emergency &amp; ICU comparison for both cities</li>
+            </ul>
+          </div>
 
-    <div class="pkg-card__foot">
-      <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="compare">Get Compare — $139 <span class="arrow">→</span></a>
-    </div>
-  </article>
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">Delivery &amp; scope</div>
+            <ul class="pkg-card__list">
+              <li class="check">Combined PDF report · 24-48h</li>
+              <li class="cross">Surgical team verification</li>
+              <li class="cross">Results call</li>
+            </ul>
+          </div>
 
-  <!-- ========== PREMIUM ========== -->
-  <article class="pkg-card pkg-card--premium">
-    <div class="pkg-card__badge pkg-card__badge--premium">✦ MOST COMPLETE</div>
-    <div class="pkg-card__header">
-      <h3 class="pkg-card__name">PREMIUM</h3>
-      <div class="pkg-card__price"><b>$199</b><span>/ report</span></div>
-      <div class="pkg-card__scope">3 doctors · 3 clinics · 3 cities</div>
-      <p class="pkg-card__quote">"Zero-risk decision making, down to the operating room team."</p>
-    </div>
+          <div class="pkg-card__foot">
+            <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="compare">Get Compare — $139 <span class="arrow">→</span></a>
+          </div>
+        </article>
 
-    <div class="pkg-card__section">
-      <div class="pkg-card__section-title">Full coverage</div>
-      <ul class="pkg-card__list">
-        <li class="check">Complete Essential-level verification for <strong>all 3</strong> doctors</li>
-        <li class="check"><span class="tag-exclusive">EXCLUSIVE</span> Ranked 3‑way comparison with final verdict</li>
-        <li class="check"><span class="tag-exclusive">EXCLUSIVE</span> 15‑min results call — we walk you through findings</li>
-        <li class="check">Priority 24h delivery &amp; 6‑month re‑verification</li>
-        <li class="check" style="color: var(--color-accent); font-weight: 500;">⭐ Free surgical team verification (anesthesiologist + nurses)</li>
-      </ul>
-    </div>
+        <!-- ========== PREMIUM ========== -->
+        <article class="pkg-card pkg-card--premium">
+          <div class="pkg-card__badge pkg-card__badge--premium">✦ MOST COMPLETE</div>
+          <div class="pkg-card__header">
+            <h3 class="pkg-card__name">PREMIUM</h3>
+            <div class="pkg-card__price"><b>$199</b><span>/ report</span></div>
+            <div class="pkg-card__scope">3 doctors · 3 clinics · 3 cities</div>
+            <p class="pkg-card__quote">"Zero-risk decision making, down to the operating room team."</p>
+          </div>
 
-    <div class="pkg-card__foot">
-      <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="premium">Get Premium — $199 <span class="arrow">→</span></a>
-    </div>
-  </article>
-</div>
+          <div class="pkg-card__section">
+            <div class="pkg-card__section-title">Full coverage</div>
+            <ul class="pkg-card__list">
+              <li class="check">Complete Essential-level verification for <strong>all 3</strong> doctors</li>
+              <li class="check"><span class="tag-exclusive">EXCLUSIVE</span> Ranked 3‑way comparison with final verdict</li>
+              <li class="check"><span class="tag-exclusive">EXCLUSIVE</span> 15‑min results call — we walk you through findings</li>
+              <li class="check">Priority 24h delivery &amp; 6‑month re‑verification</li>
+              <li class="check" style="color: var(--color-accent); font-weight: 500;">⭐ Free surgical team verification (anesthesiologist + nurses)</li>
+            </ul>
+          </div>
+
+          <div class="pkg-card__foot">
+            <a href="#start" class="btn btn--primary btn--full select-pkg-btn" data-package="premium">Get Premium — $199 <span class="arrow">→</span></a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -392,8 +429,8 @@
           <b id="form-pkg-price">$139</b>
         </div>
 
-        <!-- STEP INDICATOR -->
         <div class="form-steps">
+          <!-- STEP INDICATOR -->
           <div class="step-indicator" id="step-indicator">
             <div>
               <div class="step-dot active" data-step="1">1</div>
@@ -429,12 +466,11 @@
             </div>
           </div>
 
-          <!-- STEP 2: DOCTOR(S) + CLINIC (dynamic) -->
+          <!-- STEP 2: DOCTOR(S) + CLINIC (filled by JavaScript) -->
           <div class="form-step" data-step="2" id="step-2-container">
-            <!-- Se llena con JavaScript -->
           </div>
 
-          <!-- STEP 3: TEAM (solo Premium) -->
+          <!-- STEP 3: TEAM (Premium only) -->
           <div class="form-step" data-step="3" id="step-3-container" style="display:none;">
             <div class="field">
               <label class="field__label" for="f-team-notes">Anesthesiologist or Surgical Team Notes (Optional)</label>
@@ -446,13 +482,12 @@
           <!-- STEP 4: CONFIRM & PAY -->
           <div class="form-step" data-step="4">
             <p style="color:rgba(244,241,236,.8);">Ready to submit? Your report will be delivered as a PDF in English within 24-48h.</p>
-            
-            <!-- NUEVO CAMPO EMAIL -->
             <div class="field">
               <label class="field__label" for="f-email">Your email</label>
               <input class="field__input" id="f-email" name="email" type="email" placeholder="you@example.com" required>
             </div>
           </div>
+        </div><!-- FIX: this </div> was missing, so .form-steps was never closed -->
 
         <!-- NAVIGATION BUTTONS -->
         <div class="step-nav">
@@ -461,26 +496,25 @@
           <button type="submit" class="btn btn--primary" id="submit-btn" style="display:none;">Continue to secure payment — <span id="btn-price">$139</span> <span class="arrow">→</span></button>
         </div>
         <p class="intake__meta" id="step-meta">Secure payment via Stripe · PDF delivered in English · 24-48h turnaround</p>
-      </form>    </div>
+      </form>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer__grid">
       <div><p class="footer__brand-name">MedVerify</p><p class="footer__brand-desc">Independent medical verification for patients considering care in Mexico.</p></div>
-      <div><p class="footer__label">What we verify</p><ul class="footer__links">
-        <li>
-          <a href="../article/how-to-verify-mexican-doctors-credentials.html">Doctor credentials</a>
-        </li>
-        <li>
-          <a href="#pricing">Clinic status</a>
-        </li>
-        <li>
-          <a href="#pricing">Emergency protocol</a>
-        </li>
+      <div><p class="footer__label">Guides</p><ul class="footer__links">
+        <!-- FIX: was ../article/... (relative path that only worked by accident from the root) -->
+        <li><a href="/article/how-to-verify-mexican-doctors-credentials.html">Verify a doctor's credentials</a></li>
+        <li><a href="/article/medical-tourism-mexico-safety-guide.html">Medical tourism safety guide</a></li>
+        <li><a href="#pricing">Packages &amp; pricing</a></li>
       </ul>
       </div>
-      <div><p class="footer__label">Legal</p><ul class="footer__links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li></ul></div>
+      <div><p class="footer__label">Legal</p>
+        <!-- TODO: create these pages, then replace "#" with /privacy.html, /terms.html, /refund.html -->
+        <ul class="footer__links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li></ul>
+      </div>
     </div>
     <div class="footer__bottom"><p class="footer__legal">© 2026 MedVerify. We are an independent verification service. We are not a medical provider, insurer, or referral service. We do not recommend doctors or clinics.</p></div>
   </footer>
@@ -493,6 +527,6 @@
     </div>
   </div>
 
-  <script src="assets/app.js"></script>
+  <script src="/assets/app.js"></script>
 </body>
 </html>
